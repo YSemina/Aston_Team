@@ -1,3 +1,4 @@
+package org.example.entity;
 public class Barrel implements Comparable<Barrel>{
     private Integer volume;
     private String content;

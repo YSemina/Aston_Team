@@ -1,3 +1,4 @@
+package org.example.entity;
 public class Person implements Comparable<Person>{
     private String gender;
     private String surname;
