@@ -13,7 +13,7 @@ public class Barrel {
 
     @Override
     public String toString() {
-        return "Barrel [storedMaterial = " + storedMaterial + ", volume = " + volume + ", fromMaterial = " + fromMaterial + "]";
+        return "Barrel [volume = " + volume + ", Stored Material = " + storedMaterial + ", From Material = " + fromMaterial + "]";
     }
 
     public static class BarrelBuilder {
