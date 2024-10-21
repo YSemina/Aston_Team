@@ -10,17 +10,17 @@ public class Barrel implements Comparable<Barrel>{
         private String content;
         private String made;
 
-        public Barrel.Builder species(Integer volume) {
+        public Barrel.Builder volume(Integer volume) {
             this.volume = volume;
             return this;
         }
 
-        public Barrel.Builder eyeColor(String content) {
+        public Barrel.Builder content(String content) {
             this.content = content;
             return this;
         }
 
-        public Barrel.Builder fur(String made) {
+        public Barrel.Builder made(String made) {
             this.made = made;
             return this;
         }
