@@ -27,6 +27,7 @@ public class Human {
             this.secondName = secondName;
             this.age = age;
         }
+
         public Human build() {
             return new Human(this);
         }

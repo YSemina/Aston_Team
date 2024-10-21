@@ -27,6 +27,7 @@ public class Barrel {
             this.fromMaterial = fromMaterial;
             this.volume = volume;
         }
+
         public Barrel build() {
             return new Barrel(this);
         }
