@@ -13,7 +13,7 @@ public class Human {
 
     @Override
     public String toString() {
-        return "Human [gender=" + gender + ",age=" + age + ",secondName=" + secondName + "]";
+        return "Human [gender = " + gender + ", age = " + age + ", secondName = " + secondName + "]";
     }
 
     public static class HumanBuilder {
@@ -33,7 +33,7 @@ public class Human {
     }
 }
 
-class main {
+class humanBuild {
     public static void main(String[] args) {
         Human human = new Human.HumanBuilder("Male", "Bishop", 25)
                 .build();
