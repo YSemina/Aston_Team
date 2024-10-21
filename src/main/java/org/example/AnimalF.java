@@ -60,7 +60,7 @@ class AnimalFBuild {
         String eyeColor = scanner.nextLine();
         animalFBuilder.seteyeColor(eyeColor);
 
-        System.out.print("Type fur true or false: ");
+        System.out.print("Type fur: 'true' for true or anything else for false: ");
         boolean fur = scanner.hasNextBoolean();
         animalFBuilder.setFur(fur);
 
