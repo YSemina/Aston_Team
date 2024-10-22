@@ -3,6 +3,7 @@ package org.example;
 
 import org.example.entity.Animal;
 import org.example.entity.Barrel;
+import org.example.entity.Person;
 import org.example.search.BinarySearch;
 import org.example.sorting.InsertionSort;
 import org.example.sorting.SortStrategy;
@@ -35,7 +36,7 @@ public class Main {
 					handleBarrels();
 					break;
 				case 3:
-					handlePeople();
+					handlePersons();
 					break;
 				default:
 					System.out.println("Invalid choice. Please try again.");
@@ -167,64 +168,67 @@ public class Main {
 		}
 	}
 
-	private static void handlePeople() {
-		int n = InputUtils.getInt("Enter number of animals: ");
+	private static void handlePersons() {
+		int n = InputUtils.getInt("Enter number of persons: ");
 
-		List<Animal> animals = new ArrayList<>();
+		List<Person> persons = new ArrayList<>();
 
 		for (int i = 0; i < n; i++) {
-			String line[] = InputUtils.getString("Enter species, eye color, Has fur? (yes/no)\n").split(",");
-			String species = line[0];
-			String eyeColor = line[1];
-			boolean hasFur = line[2].equalsIgnoreCase("yes");
-
-			if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
+			String line[] = InputUtils.getString("Enter surname, age, gender (M/F)\n").split(",");
+			System.out.println(line.length);
+			if (line.length !=3||!ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 				continue;
 			}
 
-			animals.add( new Animal.Builder()
-					.species(species)
-					.eyeColor(eyeColor)
-					.hasFur(hasFur)
+			String surname = line[0];
+			String gender = line[2];
+			Integer age = Integer.valueOf(line[1]);
+
+
+
+			persons.add( new Person.Builder()
+					.surname(surname)
+					.gender(gender)
+					.age(age)
 					.build());
 		}
 
-		SortStrategy<Animal> sortStrategy = new InsertionSort<>();
+		SortStrategy<Person> sortStrategy = new InsertionSort<>();
 
-		sortStrategy.sort(animals);
+		sortStrategy.sort(persons);
 
-		System.out.println("Sorted Animals:");
+		System.out.println("Sorted Persons:");
 
-		Arrays.asList(animals).forEach(System.out::println);
+		Arrays.asList(persons).forEach(System.out::println);
 		String line[]={};
 		// Binary search example:
 		for (int i = 0; i < 1; i++) {
 
 
-			line = InputUtils.getString("Enter species, eye color, Has fur? (yes/no) to search:\n").split(",");
-			if (!ValidationUtils.isValidAnimalData(line[0], line[1], line[2].equalsIgnoreCase("yes"))) {
+			line = InputUtils.getString("Enter surname, age, gender (M/F) to search:\n").split(",");
+			if ( !ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 				continue;
 			}}
 
-		Animal searchKey = new Animal.Builder()
-				.species(line[0])
-				.eyeColor(line[1])
-				.hasFur(line[2].equalsIgnoreCase("yes"))
+		Person searchKey = new Person.Builder()
+				.surname(line[0])
+				.gender(line[2])
+				.age(Integer.valueOf(line[1]))
 				.build();
 
 		BinarySearch binarySearch = new BinarySearch();
 
-		int index = binarySearch.search(animals, searchKey);
+		int index = binarySearch.search(persons, searchKey);
 
 		if (index != -1) {
-			System.out.println("Animal found at index: " + index);
-			System.out.println(animals.get(index));
+			System.out.println("Person found at index: " + index);
+			System.out.println(persons.get(index));
 		} else {
-			System.out.println("Animal not found.");
+			System.out.println("Person not found.");
 		}
 	}
 

@@ -10,7 +10,7 @@ public class BinarySearch {
 
 		while (left <= right) {
 			int mid = left + (right - left) / 2;
-			System.out.println("obj: "+key.toString()+"\t"+ key.hashCode()+":BS:"+sortedList.get(mid).hashCode());
+//			System.out.println("obj: "+key.toString()+"\t"+ key.hashCode()+":BS:"+sortedList.get(mid).hashCode());
 			if (sortedList.get(mid).equals(key)) {
 				return mid;
 			}

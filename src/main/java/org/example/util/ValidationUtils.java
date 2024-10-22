@@ -12,9 +12,9 @@ public class ValidationUtils {
 		return volume > 0 && !content.isEmpty() && !made.isEmpty();
 	}
 
-	public static boolean isValidPersonData(String gender, int age, String lastName) {
+	public static boolean isValidPersonData( String surname,String gender, int age) {
 		// Implement validation logic
-		return age > 0 && !gender.isEmpty() && !lastName.isEmpty();
+		return age > 0 && (gender.equalsIgnoreCase("m")|| gender.equalsIgnoreCase("f")) && !surname.isEmpty();
 	}
 
 }
