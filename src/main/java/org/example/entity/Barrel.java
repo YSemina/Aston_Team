@@ -31,7 +31,7 @@ public class Barrel implements Comparable<Barrel>{
         }
     }
 
-    private Barrel(Barrel.Builder builder) {
+    public Barrel(Barrel.Builder builder) {
         this.volume = builder.volume;
         this.content = builder.content;
         this.made = builder.made;
@@ -44,6 +44,14 @@ public class Barrel implements Comparable<Barrel>{
 
     @Override
     public int compareTo(Barrel other) {
-        return this.volume.compareTo(other.volume);
+        System.out.println(this.volume+this.content+this.made);
+        System.out.println(other.volume+other.content+other.made);
+        System.out.println((this.content+this.made+this.volume).compareTo(other.content+other.made+other.volume)+"\n");
+        return (this.content+this.made+this.volume).compareTo(other.content+other.made+other.volume);
+    }
+
+    @Override
+    public String toString() {
+        return content+","+made+","+volume;
     }
 }

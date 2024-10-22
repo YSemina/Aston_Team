@@ -1,6 +1,6 @@
 package org.example.entity;
 
-import com.sun.jdi.IntegerValue;
+
 
 public class Animal implements Comparable<Animal> {
 	private String species;
@@ -40,7 +40,7 @@ public class Animal implements Comparable<Animal> {
 
 	@Override
 	public int compareTo(Animal other) {
-		return this.species.compareTo(other.species);
+		return (this.species+this.eyeColor+this.hasFur).compareTo(other.species+other.eyeColor+other.hasFur);
 	}
 
 	@Override
