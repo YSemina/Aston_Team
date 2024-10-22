@@ -52,15 +52,15 @@ class AnimalFBuild {
 
         AnimalF.AnimalFBuilder animalFBuilder = new AnimalF.AnimalFBuilder();
 
-        System.out.print("Type species: ");
+        System.out.print("Enter species: ");
         String species = scanner.nextLine();
         animalFBuilder.setSpecies(species);
 
-        System.out.print("Type eye color: ");
+        System.out.print("Enter eye color: ");
         String eyeColor = scanner.nextLine();
         animalFBuilder.seteyeColor(eyeColor);
 
-        System.out.print("Type fur: 'true' for true or anything else for false: ");
+        System.out.print("Enter fur: 'true' for true or anything else for false: ");
         boolean fur = scanner.hasNextBoolean();
         animalFBuilder.setFur(fur);
 
