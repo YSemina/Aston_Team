@@ -53,7 +53,7 @@ public class ArrayFiller {
     }
 
     private static void fillArrayFromFile(int[] array) {
-        System.out.print("Введите имя файла: ");
+        System.out.print("Enter file name: ");
         Scanner scanner = new Scanner(System.in);
         String filename = scanner.nextLine();
 
@@ -64,9 +64,9 @@ public class ArrayFiller {
                 array[i++] = Integer.parseInt(line);
             }
         } catch (IOException e) {
-            System.out.println("Ошибка при чтении файла: " + e.getMessage());
+            System.out.println("Error reading file: " + e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Ошибка формата в файле: " + e.getMessage());
+            System.out.println("Format error in file: " + e.getMessage());
         }
     }
 }
