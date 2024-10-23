@@ -3,7 +3,7 @@ package org.example.entity;
 
 import java.util.Comparator;
 
-public class Animal implements Comparable<Animal> {
+public class Animal extends Entity implements Comparable<Animal>{
 	private String species;
 	private String eyeColor;
 	private boolean hasFur;

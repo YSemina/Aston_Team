@@ -2,7 +2,7 @@ package org.example.entity;
 
 import java.util.Comparator;
 
-public class Person implements Comparable<Person> {
+public class Person extends Entity implements Comparable<Person> {
 	private String gender;
 	private String surname;
 	private Integer age;
@@ -54,10 +54,7 @@ public class Person implements Comparable<Person> {
 
 	@Override
 	public int compareTo(Person other) {
-		return Comparator.comparing(Person::getSurname)
-				.thenComparing(Person::getAge)
-				.thenComparing(Person::getGender)
-				.compare(this, other);
+		return Comparator.comparing(Person::getSurname).thenComparing(Person::getAge).thenComparing(Person::getGender).compare(this, other);
 	}
 
 	@Override

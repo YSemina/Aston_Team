@@ -2,7 +2,7 @@ package org.example.entity;
 
 import java.util.Comparator;
 
-public class Barrel implements Comparable<Barrel> {
+public class Barrel extends Entity implements Comparable<Barrel> {
 	private Integer volume;
 	private String content;
 	private String made;
