@@ -5,17 +5,21 @@ class Human implements Comparable<Human> {
     private final String gender;
     private final String secondName;
     private final int age;
-    public String Gender(){return gender;}
-    public String Surname(){return secondName;}
-    public int Age(){return age;}
+    public static InsertionSort<Human> HSort=new HumanSort();
     public Human(String g,String n,int a){
         gender=g;
         secondName=n;
         age=a;
     }
+    public String Gender(){return gender;}
+    public String Surname(){return secondName;}
+    public int Age(){return age;}
+    public static void Sort(List<Human> collection){
+        HSort.Sort(collection);
+    }
     @Override
     public int compareTo(Human human) {
-        return this.Surname().compareToIgnoreCase(human.Surname());
+        return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
     }
     @Override
     public String toString(){
@@ -23,21 +27,46 @@ class Human implements Comparable<Human> {
     }
 }
 
+class SurnameComparator implements Comparator<Human> {
+    @Override
+    public int compare(Human h1, Human h2) {
+        return h1.Surname().compareTo(h2.Surname());
+    }
+}
+
+class AgeComparator implements Comparator<Human> {
+    @Override
+    public int compare(Human h1, Human h2) {
+        return h1.Age()-h2.Age();
+    }
+}
+
+class GenderComparator implements Comparator<Human> {
+    @Override
+    public int compare(Human h1, Human h2){
+        return h1.Gender().compareTo(h2.Gender());
+    }
+}
+
 class Animal implements Comparable<Animal> {
     private final String species;
     private final String eyeColor;
     private final boolean fur;
-    public String Species(){return species;}
-    public String Eye(){return eyeColor;}
-    public boolean Fur(){return fur;}
+    public static InsertionSort<Animal> ASort=new AnimalSort();
     public Animal(String s,String e,boolean f){
         species=s;
         eyeColor=e;
         fur=f;
     }
+    public String Species(){return species;}
+    public String Eye(){return eyeColor;}
+    public boolean Fur(){return fur;}
+    public static void Sort(List<Animal> collection){
+        ASort.Sort(collection);
+    }
     @Override
     public int compareTo(Animal animal) {
-        return this.Species().compareToIgnoreCase(animal.Species());
+        return new SpeciesComparator().thenComparing(new EyeComparator()).thenComparing(new FurComparator()).compare(this,animal);
     }
     @Override
     public String toString(){
@@ -45,21 +74,48 @@ class Animal implements Comparable<Animal> {
     }
 }
 
+class SpeciesComparator implements Comparator<Animal> {
+    @Override
+    public int compare(Animal a1, Animal a2) {
+        return a1.Species().compareTo(a2.Species());
+    }
+}
+
+class EyeComparator implements Comparator<Animal> {
+    @Override
+    public int compare(Animal a1, Animal a2) {
+        return (a1.Eye()).compareTo(a2.Eye());
+    }
+}
+
+class FurComparator implements Comparator<Animal> {
+    @Override
+    public int compare(Animal a1, Animal a2){
+        if(a1.Fur()==a2.Fur())return 0;
+        else if(!a1.Fur())return 1;
+        else return -1;
+    }
+}
+
 class Barrel implements Comparable<Barrel>{
     private final String storedMaterial;
     private final String fromMaterial;
     private final int volume;
-    public String Stored(){return storedMaterial;}
-    public String From(){return fromMaterial;}
-    public int Volume(){return volume;}
+    public static InsertionSort<Barrel> BSort=new BarrelSort();
     public Barrel(String s,String f,int v){
         storedMaterial=s;
         fromMaterial=f;
         volume=v;
     }
+    public String Stored(){return storedMaterial;}
+    public int Volume(){return volume;}
+    public String From(){return fromMaterial;}
+    public static void Sort(List<Barrel> collection){
+        BSort.Sort(collection);
+    }
     @Override
     public int compareTo(Barrel barrel) {
-        return this.Stored().compareToIgnoreCase(barrel.Stored());
+        return new StoredComparator().thenComparing(new FromComparator()).thenComparing(new VolumeComparator()).compare(this,barrel);
     }
     @Override
     public String toString(){
@@ -67,7 +123,28 @@ class Barrel implements Comparable<Barrel>{
     }
 }
 
-interface InsertionSort <E extends Comparable>{
+class StoredComparator implements Comparator<Barrel> {
+    @Override
+    public int compare(Barrel b1, Barrel b2) {
+        return b1.Stored().compareTo(b2.Stored());
+    }
+}
+
+class FromComparator implements Comparator<Barrel> {
+    @Override
+    public int compare(Barrel b1, Barrel b2) {
+        return (b1.From()).compareTo(b2.From());
+    }
+}
+
+class VolumeComparator implements Comparator<Barrel> {
+    @Override
+    public int compare(Barrel b1, Barrel b2) {
+        return b1.Volume() - b2.Volume();
+    }
+}
+
+interface InsertionSort <E extends Comparable<E>>{
     default void Sort(List<E> collection){
         System.out.println("Размер коллекции "+collection.size()+"\n");
         E first=collection.get(0);
@@ -108,70 +185,52 @@ class BarrelSort implements InsertionSort<Barrel>{}
 
 class Test {
     public static void main(String[] args) {
-//        Human o1 = new Human("w", "Alice", 19);
-//        Human o2 = new Human("w", "Yuliya", 30);
-//        Human o3 = new Human("m", "Bob", 25);
-//        Human o4 = new Human("w", "Marta", 17);
-//        Human o5 = new Human("m", "Petya", 30);
-//        Human o6 = new Human("w", "Lada", 35);
-//        Human o7 = new Human("m", "Andrey", 21);
-//        List<Human> test = new ArrayList<>();
-//        test.add(o1);
-//        test.add(o2);
-//        test.add(o3);
-//        test.add(o4);
-//        test.add(o5);
-//        test.add(o6);
-//        test.add(o7);
-//        InsertionSort sort = new HumanSort();
-//        sort.Sort(test);
-//        for (Human i : test) {
-//            System.out.println(i);
-//        }
+
+        List<Human> test = new ArrayList<>();
+        test.add(new Human("w", "Alice", 19));
+        test.add(new Human("w", "Yuliya", 30));
+        test.add(new Human("m", "Bob", 25));
+        test.add(new Human("w", "Marta", 17));
+        test.add(new Human("m", "Petya", 30));
+        test.add(new Human("w", "Lada", 35));
+        test.add(new Human("m", "Andrey", 31));
+        test.add(new Human("w", "Alice", 25));
+        Human.Sort(test);
+        for (Human i : test) {
+            System.out.println(i);
+        }
 
 
-//        Animal a1=new Animal("Cat","Blue",true);
-//        Animal a2=new Animal("Dog","Brown",true);
-//        Animal a3=new Animal("Parrot","Black",false);
-//        Animal a4=new Animal("Rabbit","Blue",true);
-//        Animal a5=new Animal("Monkey","Black",true);
-//        Animal a6=new Animal("Pig","Black",false);
-//        Animal a7=new Animal("Hen","Multi-colored",false);
-//        List<Animal> test2 = new ArrayList<>();
-//        test2.add(a1);
-//        test2.add(a2);
-//        test2.add(a3);
-//        test2.add(a4);
-//        test2.add(a5);
-//        test2.add(a6);
-//        test2.add(a7);
-//        InsertionSort sort = new AnimalSort();
-//        sort.Sort(test2);
-//        for (Animal i : test2) {
-//            System.out.println(i);
-//        }
+        List<Animal> test2 = new ArrayList<>();
+        test2.add(new Animal("Cat","Blue",true));
+        test2.add(new Animal("Dog","Brown",true));
+        test2.add(new Animal("Parrot","Black",false));
+        test2.add(new Animal("Rabbit","Blue",true));
+        test2.add(new Animal("Monkey","Black",true));
+        test2.add(new Animal("Pig","Black",false));
+        test2.add(new Animal("Hen","Multi-colored",false));
+        test2.add(new Animal("Cat","Abcdefg",true));
+        Animal.Sort(test2);
+        for (Animal i : test2) {
+            System.out.println(i);
+        }
 
-//        Barrel b1 = new Barrel("Песок", "Металл", 500);
-//        Barrel b2 = new Barrel("Камни", "Алюминий", 400);
-//        Barrel b3 = new Barrel("Вода", "Сталь", 200);
-//        Barrel b4 = new Barrel("Раствор", "Пластик", 250);
-//        Barrel b5 = new Barrel("Кислота", "то, что не разъедает кислота", 10);
-//        Barrel b6 = new Barrel("Пиво", "Алюминий", 30);
-//        Barrel b7 = new Barrel("Перегной", "Пластик", 150);
-//        List<Barrel> test3 = new ArrayList<>();
-//        test3.add(b1);
-//        test3.add(b2);
-//        test3.add(b3);
-//        test3.add(b4);
-//        test3.add(b5);
-//        test3.add(b6);
-//        test3.add(b7);
-//        InsertionSort sort = new BarrelSort();
-//        sort.Sort(test3);
-//        for (Barrel i : test3) {
-//            System.out.println(i);
-//
-//        }
+
+        List<Barrel> test3 = new ArrayList<>();
+        test3.add(new Barrel("Песок", "Металл", 500));
+        test3.add(new Barrel("Камни", "Алюминий", 400));
+        test3.add(new Barrel("Вода", "Сталь", 200));
+        test3.add(new Barrel("Раствор", "Пластик", 250));
+        test3.add(new Barrel("Кислота", "то, что не разъедает кислота", 10));
+        test3.add(new Barrel("Пиво", "Алюминий", 30));
+        test3.add(new Barrel("Перегной", "Пластик", 150));
+        test3.add(new Barrel("Вода", "Сталь", 10000));
+        Barrel.Sort(test3);
+        for (Barrel i : test3) {
+            System.out.println(i);
+        }
     }
+
+
 }
 
