@@ -46,6 +46,7 @@ class animalBuild {
     }
 }
 
+//public class Animal implements Comparable<Animal>
 //public static InsertionSort<Animal> ASort=new AnimalSort();
 //    public String Species(){return species;}
 //    public String Eye(){return eyeColor;}
