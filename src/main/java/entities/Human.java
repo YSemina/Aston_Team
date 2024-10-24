@@ -1,9 +1,10 @@
 package entities;
 
-import InsertionSort.*;
+import java.util.Scanner;
+import java.io.*;
 import java.util.*;
 
-public class Human implements Comparable<Human>{
+public class Human {
     private final String gender;
     private final String secondName;
     private final int age;
@@ -14,45 +15,35 @@ public class Human implements Comparable<Human>{
         this.age = builder.age;
     }
 
-    public static InsertionSort<Human> HSort=new HumanSort();
-    public String Gender(){return gender;}
-    public String Surname(){return secondName;}
-    public int Age(){return age;}
-    public static void Sort(List<Human> collection){
-        HSort.Sort(collection);
-    }
-    @Override
-    public int compareTo(Human human) {
-        return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
-    }
     @Override
     public String toString() {
         return "Human [gender = " + gender + ", age = " + age + ", second name = " + secondName + "]";
     }
 
     public static class HumanBuilder {
-        private final String gender;
-        private final String secondName;
-        private final int age;
+        private String gender;
+        private String secondName;
+        private int age;
 
 
-        public HumanBuilder(String gender, String secondName, int age) {
+        public HumanBuilder setGender(String gender) {
             this.gender = gender;
+            return this;
+        }
+
+        public HumanBuilder setSecondName(String secondName) {
             this.secondName = secondName;
+            return this;
+        }
+
+        public HumanBuilder setAge(int age) {
             this.age = age;
+            return this;
         }
 
         public Human build() {
             return new Human(this);
         }
-    }
-}
-
-class humanBuild {
-    public static void main(String[] args) {
-        Human human = new Human.HumanBuilder("Male", "Bishop", 25)
-                .build();
-        System.out.println(human);
     }
 }
 
