@@ -1,4 +1,4 @@
-package org.example;
+package org.entities;
 
 public class Human {
     private final String gender;
@@ -42,3 +42,17 @@ class humanBuild {
     }
 }
 
+
+//public class Human implements Comparable<Human>
+
+//public static InsertionSort<Human> HSort=new HumanSort();
+//    public String Gender(){return gender;}
+//    public String Surname(){return secondName;}
+//    public int Age(){return age;}
+//public static void Sort(List<Human> collection){
+//    HSort.Sort(collection);
+//}
+//@Override
+//public int compareTo(Human human) {
+//    return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
+//}
