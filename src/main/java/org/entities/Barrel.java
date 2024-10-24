@@ -1,4 +1,4 @@
-package org.example;
+package org.entities;
 
 public class Barrel {
     private final String storedMaterial;
@@ -42,3 +42,15 @@ class barrelBuild {
     }
 }
 
+//public class Barrel implements Comparable<Barrel>
+//public static InsertionSort<Barrel> BSort=new BarrelSort();
+//    public String Stored(){return storedMaterial;}
+//    public int Volume(){return volume;}
+//    public String From(){return fromMaterial;}
+//    public static void Sort(List<Barrel> collection){
+//    BSort.Sort(collection);
+//}
+//@Override
+//public int compareTo(Barrel barrel) {
+//    return new StoredComparator().thenComparing(new FromComparator()).thenComparing(new VolumeComparator()).compare(this,barrel);
+//}
