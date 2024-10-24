@@ -3,9 +3,9 @@ package org.example.Filler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManualDataFiller <T> implements Filler<T> {
+public class ManualDataFiller <Entity> implements Filler<Entity> {
 	@Override
-	public List<T> fill() {
+	public List<Entity> fill(Entity entity) {
 		// Implement manual data input logic here
 		return new ArrayList<>();
 	}

@@ -13,6 +13,8 @@ import java.util.List;
 public class HandleAnimals {
 	public static void HandleAnimals() {
 
+
+
 		int n = InputUtils.getInt("Enter number of animals: ");
 
 		List<Animal> animals = new ArrayList<>();
