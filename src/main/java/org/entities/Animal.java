@@ -1,4 +1,4 @@
-package org.example;
+package org.entities;
 
 public class Animal {
     private final String species;
@@ -45,3 +45,16 @@ class animalBuild {
         System.out.println(animal);
     }
 }
+
+//public static InsertionSort<Animal> ASort=new AnimalSort();
+//    public String Species(){return species;}
+//    public String Eye(){return eyeColor;}
+//    public boolean Fur(){return fur;}
+//
+//public static void Sort(List<Animal> collection){
+//    ASort.Sort(collection);
+//}
+//@Override
+//public int compareTo(Animal animal) {
+//    return new SpeciesComparator().thenComparing(new EyeComparator()).thenComparing(new FurComparator()).compare(this,animal);
+//}
