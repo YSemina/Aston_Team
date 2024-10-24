@@ -1,5 +1,5 @@
 package InsertionSort;
-
+//import entities.*;
 import  java.util.*;
 
 
@@ -33,13 +33,14 @@ public interface InsertionSort <E extends Comparable<E>>{
         System.out.println("Min: "+ min + "\n");
     }
 }
-//class Main{
-//    public static void main(String[]args){
-//        List<Human> test=new ArrayList<>();
+
+//class Main {
+//    public static void main(String[] args) {
+//        List<Human> test = new ArrayList<>();
 //        test.add(new Human.HumanBuilder("Male", "Bishop", 25).build());
 //        test.add(new Human.HumanBuilder("Female", "Anya", 23).build());
 //        Human.Sort(test);
-//        for(Human i:test){
+//        for (Human i : test) {
 //            System.out.println(i);
 //        }
 //    }
