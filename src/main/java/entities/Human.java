@@ -1,6 +1,9 @@
-package org.entities;
+package entities;
 
-public class Human {
+import InsertionSort.*;
+import java.util.*;
+
+public class Human implements Comparable<Human>{
     private final String gender;
     private final String secondName;
     private final int age;
@@ -11,6 +14,17 @@ public class Human {
         this.age = builder.age;
     }
 
+    public static InsertionSort<Human> HSort=new HumanSort();
+    public String Gender(){return gender;}
+    public String Surname(){return secondName;}
+    public int Age(){return age;}
+    public static void Sort(List<Human> collection){
+        HSort.Sort(collection);
+    }
+    @Override
+    public int compareTo(Human human) {
+        return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
+    }
     @Override
     public String toString() {
         return "Human [gender = " + gender + ", age = " + age + ", second name = " + secondName + "]";
@@ -43,16 +57,3 @@ class humanBuild {
 }
 
 
-//public class Human implements Comparable<Human>
-
-//public static InsertionSort<Human> HSort=new HumanSort();
-//    public String Gender(){return gender;}
-//    public String Surname(){return secondName;}
-//    public int Age(){return age;}
-//public static void Sort(List<Human> collection){
-//    HSort.Sort(collection);
-//}
-//@Override
-//public int compareTo(Human human) {
-//    return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
-//}

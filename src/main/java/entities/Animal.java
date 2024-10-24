@@ -1,6 +1,9 @@
-package org.entities;
+package entities;
 
-public class Animal {
+import InsertionSort.*;
+import java.util.*;
+
+public class Animal implements Comparable<Animal>{
     private final String species;
     private final String eyeColor;
     private final boolean fur;
@@ -9,6 +12,19 @@ public class Animal {
         this.species = builder.species;
         this.eyeColor = builder.eyeColor;
         this.fur = builder.fur;
+    }
+
+    public static InsertionSort<Animal> ASort=new AnimalSort();
+    public String Species(){return species;}
+    public String Eye(){return eyeColor;}
+    public boolean Fur(){return fur;}
+
+    public static void Sort(List<Animal> collection){
+        ASort.Sort(collection);
+    }
+    @Override
+    public int compareTo(Animal animal) {
+        return new SpeciesComparator().thenComparing(new EyeComparator()).thenComparing(new FurComparator()).compare(this,animal);
     }
 
     @Override
@@ -46,16 +62,3 @@ class animalBuild {
     }
 }
 
-//public class Animal implements Comparable<Animal>
-//public static InsertionSort<Animal> ASort=new AnimalSort();
-//    public String Species(){return species;}
-//    public String Eye(){return eyeColor;}
-//    public boolean Fur(){return fur;}
-//
-//public static void Sort(List<Animal> collection){
-//    ASort.Sort(collection);
-//}
-//@Override
-//public int compareTo(Animal animal) {
-//    return new SpeciesComparator().thenComparing(new EyeComparator()).thenComparing(new FurComparator()).compare(this,animal);
-//}
