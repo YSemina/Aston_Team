@@ -77,6 +77,8 @@ public class Application {
 
                 BinarySearch binarySearch = new BinarySearch();
 
+                System.out.println(searchKey);
+
                 int index = binarySearch.search(handle.getEntities(), searchKey);
 
                 if (index != -1) {

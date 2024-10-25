@@ -58,7 +58,8 @@ public class InputUtils {
                     }
                     break;
                 case "barrel":
-                    line = InputUtils.getString("Для поиска введите хранимый материал, материал из которого изготовлена, объем,:\n").split(",");
+                    line = InputUtils.getString("Для поиска введите хранимый материал, материал из которого изготовлена, объем:\n").split(",");
+                    System.out.println(line[0]+"_"+line[1]+"_"+line[2]);
                     if (!ValidationUtils.isValidBarrelData(Integer.valueOf(line[2]), line[0], line[1])) {
                         System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
                         i--;
