@@ -3,11 +3,14 @@ package entities;
 import InsertionSort.*;
 import java.util.*;
 
-public class Human implements Comparable<Human>{
+public class Human implements Comparable<Human>, Get{
     private final String gender;
     private final String secondName;
     private final int age;
-
+    @Override
+    public int Gets(){
+        return age;
+    }
     public Human(HumanBuilder builder) {
         this.gender = builder.gender;
         this.secondName = builder.secondName;

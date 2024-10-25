@@ -8,6 +8,12 @@ public class Animal implements Comparable<Animal>{
     private final String eyeColor;
     private final boolean fur;
 
+    public Animal(String s,String e,boolean f) {
+        this.species = s;
+        this.eyeColor = e;
+        this.fur = f;
+    }
+
     public Animal(AnimalBuilder builder) {
         this.species = builder.species;
         this.eyeColor = builder.eyeColor;
