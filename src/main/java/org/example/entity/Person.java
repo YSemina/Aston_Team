@@ -2,7 +2,7 @@ package org.example.entity;
 
 import java.util.Comparator;
 
-public class Person extends Entity implements Comparable<Person> {
+public class Person implements Comparable<Person> {
 	private String gender;
 	private String surname;
 	private Integer age;

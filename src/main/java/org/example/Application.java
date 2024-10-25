@@ -4,6 +4,7 @@ import org.example.util.Handle;
 import org.example.util.InputUtils;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import static org.example.util.InputUtils.typeOfFill;
 
@@ -39,7 +40,7 @@ public class Application {
 
             handle.filler(typeOfFill(), entity);
 
-        System.out.println(choice);
+            Arrays.asList(handle.getEntities()).forEach(System.out::println);
         }
 
     }

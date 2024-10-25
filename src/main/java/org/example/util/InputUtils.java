@@ -30,7 +30,7 @@ public class InputUtils {
 		System.out.println("2. Случайно");
 		System.out.println("3. Из файла");
 
-		int choice = InputUtils.getInt("Enter your choice: ");
+		int choice = InputUtils.getInt("Введите свой вариант: ");
 
 		switch (choice) {
 			case 1:

@@ -4,8 +4,6 @@ import org.example.filler.FileDataFiller;
 import org.example.filler.Filler;
 import org.example.filler.ManualDataFiller;
 import org.example.filler.RandomDataFiller;
-import org.example.entity.Animal;
-import org.example.entity.Entity;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Handle {
-	private  List<Entity> entities;// = new ArrayList<>();
+	private  List entities;// = new ArrayList<>();
 
-	public List<Entity> getEntities() {
+	public List getEntities() {
 		return entities;
 	}
 

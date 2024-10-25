@@ -1,41 +1,40 @@
 package org.example.filler;
 
+
 import org.example.entity.Animal;
 import org.example.util.InputUtils;
 import org.example.util.ValidationUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
-public class RandomDataFiller <Entity> implements Filler<Entity> {
-	@Override
-	public List<Entity> fill( String entity) {
-		int n = InputUtils.getInt("Enter number of "+entity+"s: ");
-		List<Animal> animals = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
-			final String[] line = UUID.randomUUID().toString().split("-");
+public class RandomDataFiller<Entity> implements Filler<Entity> {
+    private final String[] animalSpecies = {"слон", "тигр", "лев", "жираф", "зебра", "кенгуру", "коала", "медведь", "волк", "лиса", "бобр", "еж", "кабан", "олень", "лось", "антилопа", "козел", "овца", "корова", "лошадь", "осел", "верблюд", "буйвол", "носорог", "гиппопотам", "горилла", "шимпанзе", "орангутан", "панда", "ягуар", "гепард", "леопард", "пума", "рысь", "каракал", "манул", "енот", "барсук", "хорек", "выдра", "норка", "куница", "сурикат", "дикобраз", "тапир", "ленивец", "муравьед", "броненосец"};
+    private final String[] animalEyeColor = {"голубой", "зеленый", "карий", "серый", "черный", "янтарный", "ореховый", "бирюзовый", "сапфировый", "лазурный", "изумрудный", "аквамариновый", "нефритовый", "оливковый", "медовый", "шоколадный", "вишневый", "фиалковый", "аметистовый", "серо-голубой", "серо-зеленый", "золотистый", "пепельный", "стальной", "платиновый", "бронзовый", "кобальтовый", "индиго", "лиловый", "лавандовый", "бордовый", "графитовый", "карамельный", "кофейный", "темно-карий", "темно-зеленый", "темно-синий", "темно-серый", "светло-карий", "светло-зеленый", "светло-голубой", "светло-серый", "персиковый", "пурпурный", "малиновый", "гранатовый", "сине-зеленый", "серо-карий"};
 
-//			String line[] = InputUtils.getString("Enter species, eye color, Has fur? (yes/no)\n").split(",");
-			Arrays.stream(line).forEach(e-> System.out.print(e+" "));
-			System.out.println();
-			String species = line[0];
-			String eyeColor = line[1];
-			boolean hasFur = line[2].equalsIgnoreCase("yes");
+    @Override
+    public List fill(String entity) {
+        int n = InputUtils.getInt("Количество: ");
+        List<Animal> entities;
+        entities= new ArrayList<Animal>();
+        for (int i = 0; i < n; i++) {
 
-			if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
-				System.out.println("Invalid data entered. Please try again.");
-				i--;
-				continue;
-			}
+            String species = animalSpecies[(int) (Math.random() * animalSpecies.length)];
+            String eyeColor = animalEyeColor[(int) (Math.random() * animalEyeColor.length)];
+            boolean hasFur = Math.random() > 0.5 ? true : false;
 
-			animals.add(new Animal.Builder()
-					.species(species)
-					.eyeColor(eyeColor)
-					.hasFur(hasFur)
-					.build());
-		}
-		return (List<Entity>) animals;
-	}
+            if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
+                System.out.println("Введены недопустимые данные. Пожалуйста, попробуйте еще раз.");
+                i--;
+                continue;
+            }
+
+            entities.add(new Animal.Builder()
+                    .species(species)
+                    .eyeColor(eyeColor)
+                    .hasFur(hasFur)
+                    .build());
+        }
+        return  entities;
+    }
 }
