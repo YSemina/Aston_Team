@@ -85,8 +85,7 @@ class Filler {
             int repeatCount = scanner.nextInt();
             scanner.nextLine();
 
-            for (int i = 0; i < repeatCount; i++) {
-                String[] gender = {"Male", "Female"};
+            for (int i = 0; i < repeatCount; i++) {                String[] gender = {"Male", "Female"};
                 String[] secondName = {"Woods", "Dauda", "Hackett", "Bishop"};
                 Random random = new Random();
 
@@ -136,8 +135,10 @@ class Filler {
 
     static class FFFill {
         void execute() {
-            String filePath = "Array.txt";
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            System.out.print("Enter file name: ");
+            Scanner scanner = new Scanner(System.in);
+            String filename = scanner.nextLine();
+            try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split(",");
