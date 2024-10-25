@@ -13,7 +13,7 @@ public class InputUtils {
 	public static int getInt(String prompt) {
 		System.out.print(prompt);
 		while (!scanner.hasNextInt()) {
-			System.out.println("Invalid input. Please enter an integer.");
+			System.out.println("Неверный ввод. Пожалуйста, введите целое число.");
 			scanner.next();
 		}
 		return scanner.nextInt();

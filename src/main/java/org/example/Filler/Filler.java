@@ -1,7 +1,7 @@
-package org.example.Filler;
+package org.example.filler;
 
 import java.util.List;
 
 public interface Filler<Entity> {
-	public List<Entity> fill(Entity entity);
+	public List<Entity> fill(String entity);
 }

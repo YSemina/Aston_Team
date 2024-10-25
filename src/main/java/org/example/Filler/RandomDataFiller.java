@@ -1,4 +1,4 @@
-package org.example.Filler;
+package org.example.filler;
 
 import org.example.entity.Animal;
 import org.example.util.InputUtils;
@@ -11,9 +11,8 @@ import java.util.UUID;
 
 public class RandomDataFiller <Entity> implements Filler<Entity> {
 	@Override
-	public List<Entity> fill( Entity entity) {
-		int n = InputUtils.getInt("Enter number of "+entity.getClass().getName().replace("org.example.entity.", "").toLowerCase()+"s: ");
-		System.out.println(entity.getClass());
+	public List<Entity> fill( String entity) {
+		int n = InputUtils.getInt("Enter number of "+entity+"s: ");
 		List<Animal> animals = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			final String[] line = UUID.randomUUID().toString().split("-");
