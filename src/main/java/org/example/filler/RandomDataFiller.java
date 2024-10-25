@@ -5,7 +5,6 @@ import org.example.entity.Animal;
 import org.example.entity.Barrel;
 import org.example.entity.Person;
 import org.example.util.InputUtils;
-import org.example.util.ValidationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,8 +68,8 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
                 for (int i = 0; i < n; i++) {
 
                     String gender = Math.random() > 0.5 ? "М" : "Ж";
-                    String surname = personSurname[(int) (Math.random() * personSurname.length)]+(gender.equals("Ж")?"а":"");
-                    Integer age = (int) (Math.random() * 95)+5;
+                    String surname = personSurname[(int) (Math.random() * personSurname.length)] + (gender.equals("Ж") ? "а" : "");
+                    Integer age = (int) (Math.random() * 95) + 5;
 
                    /* if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
                         System.out.println("Введены недопустимые данные. Пожалуйста, попробуйте еще раз.");
@@ -90,4 +89,6 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
 
         return entities;
     }
+
+
 }

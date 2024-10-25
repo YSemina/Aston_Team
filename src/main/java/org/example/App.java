@@ -29,64 +29,64 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		List<Animal> animals = new ArrayList<>();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Animal> animals = new ArrayList<>();
 
-		while (true) {
-			System.out.println("Выберите действие:");
-			System.out.println("1. Добавить животное");
-			System.out.println("2. Сортировать животных");
-			System.out.println("3. Найти животное");
-			System.out.println("0. Выход");
+        while (true) {
+            System.out.println("Выберите действие:");
+            System.out.println("1. Добавить животное");
+            System.out.println("2. Сортировать животных");
+            System.out.println("3. Найти животное");
+            System.out.println("0. Выход");
 
-			int choice = scanner.nextInt();
-			scanner.nextLine(); // очистка буфера
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // очистка буфера
 
-			switch (choice) {
-				case 1:
-					// Добавление животного вручную (с валидацией)
-					System.out.print("Введите вид: ");
-					String species = scanner.nextLine();
-					System.out.print("Введите цвет глаз: ");
-					String eyeColor = scanner.nextLine();
-					System.out.print("Есть ли шерсть (true/false): ");
-					boolean hasFur = scanner.nextBoolean();
-					animals.add(new Animal.Builder().species(species).eyeColor(eyeColor).hasFur(hasFur).build());
-					for (Animal a : animals) {
-						System.out.println(a);
-					}
-					break;
+            switch (choice) {
+                case 1:
+                    // Добавление животного вручную (с валидацией)
+                    System.out.print("Введите вид: ");
+                    String species = scanner.nextLine();
+                    System.out.print("Введите цвет глаз: ");
+                    String eyeColor = scanner.nextLine();
+                    System.out.print("Есть ли шерсть (true/false): ");
+                    boolean hasFur = scanner.nextBoolean();
+                    animals.add(new Animal.Builder().species(species).eyeColor(eyeColor).hasFur(hasFur).build());
+                    for (Animal a : animals) {
+                        System.out.println(a);
+                    }
+                    break;
 
-				case 2:
-					// Сортировка животных
-					InsertionSort<Animal> sorter = new InsertionSort<>();
-					sorter.sort(animals);
-					for (Animal a : animals) {
-						System.out.println(a);
-					}
-					System.out.println("Животные отсортированы.");
-					break;
+                case 2:
+                    // Сортировка животных
+                    InsertionSort<Animal> sorter = new InsertionSort<>();
+                    sorter.sort(animals);
+                    for (Animal a : animals) {
+                        System.out.println(a);
+                    }
+                    System.out.println("Животные отсортированы.");
+                    break;
 
-				case 3:
-					// Поиск животного
-					System.out.print("Введите вид для поиска: ");
-					String searchSpecies = scanner.nextLine();
-					int index = BinarySearch.search(animals, new Animal.Builder().species(searchSpecies).eyeColor(searchSpecies).hasFur(true).build());
-					if (index != -1) {
-						System.out.println("Животное найдено: " + animals.get(index));
-					} else {
-						System.out.println("Животное не найдено.");
-					}
-					break;
+                case 3:
+                    // Поиск животного
+                    System.out.print("Введите вид для поиска: ");
+                    String searchSpecies = scanner.nextLine();
+                    int index = BinarySearch.search(animals, new Animal.Builder().species(searchSpecies).eyeColor(searchSpecies).hasFur(true).build());
+                    if (index != -1) {
+                        System.out.println("Животное найдено: " + animals.get(index));
+                    } else {
+                        System.out.println("Животное не найдено.");
+                    }
+                    break;
 
-				case 0:
-					System.out.println("Выход из программы.");
-					return;
+                case 0:
+                    System.out.println("Выход из программы.");
+                    return;
 
-				default:
-					System.out.println("Неверный выбор, попробуйте снова.");
-			}
-		}
-	}
+                default:
+                    System.out.println("Неверный выбор, попробуйте снова.");
+            }
+        }
+    }
 }
