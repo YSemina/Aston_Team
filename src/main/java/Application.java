@@ -48,8 +48,9 @@ public class Application {
 //            handle.filler(typeOfFill(),animals);
 
             Arrays.asList(handle.getEntities()).forEach(System.out::println);
-
+            System.out.print("Для поиска ");
             String[] line = typeOfFill(entity);
+
 
             if (entity.equals("animal")) {
 
@@ -63,10 +64,10 @@ public class Application {
                 int index = binarySearch.search(handle.getEntities(), searchKey);
 
                 if (index != -1) {
-                    System.out.println("Animal found at index: " + index);
+                    System.out.println("Животное найденое в индексе: " + index);
                     System.out.println(handle.getEntities().get(index));
                 } else {
-                    System.out.println("Animal not found.");
+                    System.out.println("Животное не найдено.");
                 }
             } else if (entity.equals("barrel")) {
                 Barrel.Sort(handle.getEntities());
@@ -79,10 +80,10 @@ public class Application {
                 int index = binarySearch.search(handle.getEntities(), searchKey);
 
                 if (index != -1) {
-                    System.out.println("Barrel found at index: " + index);
+                    System.out.println("Боска найденна в индексе: " + index);
                     System.out.println(handle.getEntities().get(index));
                 } else {
-                    System.out.println("Barrel not found.");
+                    System.out.println("Бочка не найдена.");
                 }
 
             } else if ((entity.equals("person"))) {
@@ -94,10 +95,10 @@ public class Application {
                 int index = binarySearch.search(handle.getEntities(), searchKey);
 
                 if (index != -1) {
-                    System.out.println("Person found at index: " + index);
+                    System.out.println("Человек найден на интексе: " + index);
                     System.out.println(handle.getEntities().get(index));
                 } else {
-                    System.out.println("Person not found.");
+                    System.out.println("Человек не найден.");
                 }
 
             }
