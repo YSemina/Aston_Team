@@ -4,6 +4,8 @@ import org.example.entity.Animal;
 import org.example.entity.Barrel;
 import org.example.entity.Person;
 import org.example.search.BinarySearch;
+import org.example.sorting.InsertionSort;
+import org.example.sorting.SortStrategy;
 import org.example.util.Handle;
 import org.example.util.InputUtils;
 import org.example.util.ValidationUtils;
@@ -49,6 +51,10 @@ public class Application {
 //            handle.filler(typeOfFill(),animals);
 
             Arrays.asList(handle.getEntities()).forEach(System.out::println);
+            SortStrategy sortStrategy = new InsertionSort<>();
+            sortStrategy.sort(handle.getEntities());
+            Arrays.asList(handle.getEntities()).forEach(System.out::println);
+
 
             String[] line = typeOfFill(entity);
             if (entity.equals("animal")) {
@@ -57,7 +63,8 @@ public class Application {
                         .eyeColor(line[1])
                         .hasFur(line[2].equalsIgnoreCase("yes"))
                         .build();
-
+                System.out.println(searchKey.getClass()+" key:"+searchKey);
+                System.out.println(handle.getEntities().get(5).getClass()+" animal:"+handle.getEntities().get(5));
                 BinarySearch binarySearch = new BinarySearch();
 
                 int index = binarySearch.search(handle.getEntities(), searchKey);
