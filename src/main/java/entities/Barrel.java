@@ -16,6 +16,27 @@ public class Barrel implements Comparable<Barrel>{
     public String Stored(){return storedMaterial;}
     public int Volume(){return volume;}
     public String From(){return fromMaterial;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Barrel barrel = (Barrel) o;
+
+        if (volume != barrel.volume) return false;
+        if (!storedMaterial.equals(barrel.storedMaterial)) return false;
+        return fromMaterial.equals(barrel.fromMaterial);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = storedMaterial.hashCode();
+        result = 31 * result + fromMaterial.hashCode();
+        result = 31 * result + volume;
+        return result;
+    }
+
     public static void Sort(List<Barrel> collection){
         BSort.Sort(collection);
     }
