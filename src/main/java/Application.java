@@ -50,7 +50,12 @@ public class Application {
             Arrays.asList(handle.getEntities()).forEach(System.out::println);
 
             String[] line = typeOfFill(entity);
+
             if (entity.equals("animal")) {
+
+                        Animal.Sort(handle.getEntities());
+                Arrays.asList(handle.getEntities()).forEach(System.out::println);
+
                 Animal searchKey = new Animal.AnimalBuilder(line[0],line[1]).fur(line[2].equalsIgnoreCase("yes")).build();
 
                 BinarySearch binarySearch = new BinarySearch();
@@ -64,6 +69,7 @@ public class Application {
                     System.out.println("Animal not found.");
                 }
             } else if (entity.equals("barrel")) {
+                Barrel.Sort(handle.getEntities());
                 Barrel searchKey = new Barrel.BarrelBuilder(line[0],line[1],Integer.valueOf(line[2])).build();
 
                 BinarySearch binarySearch = new BinarySearch();
@@ -80,6 +86,7 @@ public class Application {
                 }
 
             } else if ((entity.equals("person"))) {
+                Human.Sort(handle.getEntities());
                 Human searchKey = new Human.HumanBuilder(line[2], line[0], Integer.valueOf(line[1])).build();
 
                 BinarySearch binarySearch = new BinarySearch();
