@@ -31,9 +31,3 @@ public interface InsertionSort<E extends Comparable<E>> {
 		collection.set(0, min);
 	}
 }
-
-
-
-
-
-

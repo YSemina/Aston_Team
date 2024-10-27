@@ -89,12 +89,3 @@ public class Barrel implements Comparable<Barrel>, Get {
 		}
 	}
 }
-
-class barrelBuild {
-	public static void main(String[] args) {
-		Barrel barrel = new Barrel.BarrelBuilder("Water", "Wood", 25)
-				.build();
-		System.out.println(barrel);
-	}
-}
-

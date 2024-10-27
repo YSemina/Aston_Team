@@ -84,12 +84,3 @@ public class Animal implements Comparable<Animal> {
 		}
 	}
 }
-
-class animalBuild {
-	public static void main(String[] args) {
-		Animal animal = new Animal.AnimalBuilder("mammals", "Hazel").fur(false).fur(true)
-				.build();
-		System.out.println(animal);
-	}
-}
-

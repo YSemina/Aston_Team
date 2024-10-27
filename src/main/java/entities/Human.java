@@ -88,14 +88,3 @@ public class Human implements Comparable<Human>, Get {
 		}
 	}
 }
-
-
-class humanBuild {
-	public static void main(String[] args) {
-		Human human = new Human.HumanBuilder("Male", "Bishop", 25)
-				.build();
-		System.out.println(human);
-	}
-}
-
-
