@@ -21,45 +21,44 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
 		int n = InputUtils.getInt("Количество: ");
 		List entities = null;
 		switch (entity) {
-			case "animal":
+			case "animal" -> {
 				entities = new ArrayList<Animal>();
 				for (int i = 0; i < n; i++) {
 
 					String species = animalSpecies[(int) (Math.random() * animalSpecies.length)];
 					String eyeColor = animalEyeColor[(int) (Math.random() * animalEyeColor.length)];
-					boolean fur = Math.random() > 0.5 ? true : false;
+					boolean fur = Math.random() > 0.5;
 
 					entities.add(new Animal.AnimalBuilder(species, eyeColor).fur(fur).build());
 
 				}
-				break;
-			case "barrel":
+			}
+			case "barrel" -> {
 				entities = new ArrayList<Barrel>();
 				for (int i = 0; i < n; i++) {
 
 					String storedMaterial = barrelContent[(int) (Math.random() * barrelContent.length)];
 					String fromMaterial = barrelMade[(int) (Math.random() * barrelMade.length)];
-					Integer volume = (int) (Math.random() * 600);
+					int volume = (int) (Math.random() * 600);
 
 
 					entities.add(new Barrel.BarrelBuilder(storedMaterial, fromMaterial, volume).build());
 
 				}
-				break;
-			case "person":
+			}
+			case "person" -> {
 				entities = new ArrayList<Human>();
 				for (int i = 0; i < n; i++) {
 
 					String gender = Math.random() > 0.5 ? "М" : "Ж";
 					String secondName = personSurname[(int) (Math.random() * personSurname.length)] + (gender.equals("Ж") ? "а" : "");
-					Integer age = (int) (Math.random() * 95) + 5;
+					int age = (int) (Math.random() * 95) + 5;
 
 
 					entities.add(new Human.HumanBuilder(gender, secondName, age).build());
 
 				}
-				break;
-
+			}
 		}
 
 		return entities;

@@ -43,20 +43,20 @@ public class InputUtils {
 	}
 
 	public static String[] typeOfFill(String entity) {
-		String line[] = null;
+		String[] line = null;
 
 		for (int i = 0; i < 1; i++) {
 			switch (entity) {
-				case "animal": {
+				case "animal" -> {
 					String s = InputUtils.getString("Введите вид, цвет глаз, есть ли мех? (да/нет):\n");
 					line = s.split(",");
 					if (!ValidationUtils.isValidAnimalData(s)) {
 						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
 						i--;
 					}
-					break;
+
 				}
-				case "barrel": {
+				case "barrel" -> {
 					String s = InputUtils.getString("Введите хранимый материал, материал из которого изготовлена, объем:\n");
 					line = s.split(",");
 					if (!ValidationUtils.isValidBarrelData(s)) {
@@ -64,9 +64,9 @@ public class InputUtils {
 						i--;
 
 					}
-					break;
+
 				}
-				case "person": {
+				case "person" -> {
 					String s = InputUtils.getString("Введите фамилия, возраст, пол (М/Ж):\n");
 					line = s.split(",");
 					if (!ValidationUtils.isValidPersonData(s)) {
@@ -74,7 +74,7 @@ public class InputUtils {
 						i--;
 
 					}
-					break;
+
 				}
 			}
 		}

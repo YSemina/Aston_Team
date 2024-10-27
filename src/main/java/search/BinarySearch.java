@@ -3,6 +3,7 @@ package search;
 
 import java.util.List;
 
+
 public class BinarySearch {
 	public static <T extends Comparable<T>> int search(List<T> sortedList, T key) {
 		int left = 0;
@@ -20,5 +21,8 @@ public class BinarySearch {
 			}
 		}
 		return -1; // Элемент не найден
+	}
+
+	private BinarySearch() {
 	}
 }
