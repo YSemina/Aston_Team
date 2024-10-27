@@ -1,6 +1,6 @@
 package insertionSort;
 
 
-public interface Get{
-    int Gets();
+public interface Get {
+	int Gets();
 }
