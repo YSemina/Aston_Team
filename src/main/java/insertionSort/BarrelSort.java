@@ -1,4 +1,4 @@
-package insertionSort_;
+package insertionSort;
 
 import entities.Barrel;
 
