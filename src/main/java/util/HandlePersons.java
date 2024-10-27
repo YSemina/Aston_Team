@@ -16,9 +16,10 @@ public class HandlePersons {
 		List<Human> persons = new ArrayList<>();
 
 		for (int i = 0; i < n; i++) {
-			String line[] = InputUtils.getString("Enter surname, age, gender (M/F)\n").split(",");
+			String s=InputUtils.getString("Enter surname, age, gender (M/F)\n");
+			String line[] = s.split(",");
 			System.out.println(line.length);
-			if (line.length != 3 || !ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
+			if (!ValidationUtils.isValidPersonData(s)) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 				continue;
@@ -43,10 +44,10 @@ public class HandlePersons {
 		String line[] = {};
 		// Binary search example:
 		for (int i = 0; i < 1; i++) {
+String s=InputUtils.getString("Enter surname, age, gender (M/F) to search:\n");
 
-
-			line = InputUtils.getString("Enter surname, age, gender (M/F) to search:\n").split(",");
-			if (!ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
+			line = s.split(",");
+			if (!ValidationUtils.isValidPersonData(s)) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 

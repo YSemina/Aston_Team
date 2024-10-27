@@ -15,16 +15,18 @@ public class HandleBarrels {
 		List<Barrel> barrels = new ArrayList<>();
 
 		for (int i = 0; i < n; i++) {
-			String line[] = InputUtils.getString("Enter content, made, volume\n").split(",");
-			String storedMaterial = line[0];
-			String fromMaterial = line[1];
-			Integer volume = Integer.valueOf(line[2]);
+			String s=InputUtils.getString("Enter content, made, volume\n");
+			String line[] = s.split(",");
 
-			if (!ValidationUtils.isValidBarrelData(volume, storedMaterial, fromMaterial)) {
+
+			if (!ValidationUtils.isValidBarrelData(s)) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 				continue;
 			}
+			String storedMaterial = line[0];
+			String fromMaterial = line[1];
+			Integer volume = Integer.valueOf(line[2]);
 
 			barrels.add(new Barrel.BarrelBuilder(storedMaterial, fromMaterial, volume).build());
 
@@ -41,9 +43,9 @@ public class HandleBarrels {
 		String line[] = {};
 		for (int i = 0; i < 1; i++) {
 
-
-			line = InputUtils.getString("Enter content, made, volume to search:\n").split(",");
-			if (!ValidationUtils.isValidBarrelData(Integer.valueOf(line[2]), line[0], line[1])) {
+String s=InputUtils.getString("Enter content, made, volume to search:\n");
+			line = s.split(",");
+			if (!ValidationUtils.isValidBarrelData(s)) {
 				System.out.println("Invalid data entered. Please try again.");
 				i--;
 

@@ -47,7 +47,7 @@ public class InputUtils {
 
 		for (int i = 0; i < 1; i++) {
 			switch (entity) {
-				case "animal":
+				case "animal": {
 					String s = InputUtils.getString("Введите вид, цвет глаз, есть ли мех? (да/нет):\n");
 					line = s.split(",");
 					if (!ValidationUtils.isValidAnimalData(s)) { // line[0], line[1], line[2].equalsIgnoreCase("да")
@@ -55,23 +55,27 @@ public class InputUtils {
 						i--;
 					}
 					break;
-				case "barrel":
-					line = InputUtils.getString("Введите хранимый материал, материал из которого изготовлена, объем:\n").split(",");
-					System.out.println(line[0] + "_" + line[1] + "_" + line[2]);
-					if (!ValidationUtils.isValidBarrelData(Integer.valueOf(line[2]), line[0], line[1])) {
+				}
+				case "barrel": {
+					String s = InputUtils.getString("Введите хранимый материал, материал из которого изготовлена, объем:\n");
+					line = s.split(",");
+					if (!ValidationUtils.isValidBarrelData(s)) {
 						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
 						i--;
 
 					}
 					break;
-				case "person":
-					line = InputUtils.getString("Введите фамилия, возраст, пол (М/Ж):\n").split(",");
-					if (!ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
+				}
+				case "person": {
+					String s =InputUtils.getString("Введите фамилия, возраст, пол (М/Ж):\n");
+					line = s.split(",");
+					if (!ValidationUtils.isValidPersonData(s)) {
 						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
 						i--;
 
 					}
 					break;
+				}
 			}
 		}
 		return line;

@@ -3,7 +3,6 @@ package filler;
 import entities.Animal;
 import entities.Barrel;
 import entities.Human;
-import util.InputUtils;
 import util.ValidationUtils;
 
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static util.InputUtils.getString;
-import static util.InputUtils.typeOfFill;
 
 public class FileDataFiller<Entity> implements Filler<Entity> {
 	private static final Logger logger = Logger.getLogger(FileDataFiller.class.getName());
@@ -35,13 +33,11 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 			}
 			;
 		}
-//        String fileName=getString("Введите имя файла");
-//        System.out.println(Files.exists(Paths.get(RESOURCES + fileName)));
+
 		final Path path = Paths.get(RESOURCES + fileName);
 		final List<String> lines = Files.readAllLines(path);
 		Arrays.asList(lines).forEach(System.out::println);
 
-		//  int n = InputUtils.getInt("Количество: ");
 		List entities = null;
 		switch (entity) {
 			case "animal":
@@ -50,14 +46,12 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 					String line[] = s.split(",");
 					if (!ValidationUtils.isValidAnimalData(s)) { // line[0], line[1], line[2].equalsIgnoreCase("да")
 //                        System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
-						logger.log(Level.INFO, "Не верные данные: "+s);
+						logger.log(Level.INFO, "Не верные данные для животных: "+s);
 
 						continue;
 					}
-//                    String[] line = typeOfFill(entity);
 
 					entities.add(new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")||line[2].equalsIgnoreCase("true")).build());
-//							equalsIgnoreCase("да"||"true")).build());
 
 				}
 				break;
@@ -65,9 +59,8 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 				entities = new ArrayList<Barrel>();
 				for (String s : lines) {
 					String line[] = s.split(",");
-					if (!ValidationUtils.isValidBarrelData(Integer.valueOf(line[2]), line[0], line[1])) {
-//						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
-						logger.log(Level.INFO, "Не верные данные: "+s);
+					if (!ValidationUtils.isValidBarrelData(s)) {
+						logger.log(Level.INFO, "Не верные данные для бочек: "+s);
 
 						continue;
 
@@ -80,9 +73,8 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 				entities = new ArrayList<Human>();
 				for (String s : lines) {
 					String line[] = s.split(",");
-					if (!ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
-//						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
-						logger.log(Level.INFO, "Не верные данные: "+s);
+					if (!ValidationUtils.isValidPersonData(s)) {
+						logger.log(Level.INFO, "Не верные данные для людей: "+s);
 
 						continue;
 
