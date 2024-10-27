@@ -6,6 +6,10 @@ public class Barrel implements Comparable<Barrel>,Get{
     private final String fromMaterial;
     private final int volume;
 
+    public static void SetSort(InsertionSort<Barrel> sort){
+        BSort=sort;
+    }
+
     @Override
     public int Gets(){
        return volume;

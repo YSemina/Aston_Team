@@ -13,6 +13,10 @@ public class Human implements Comparable<Human>, Get{
         return age;
     }
 
+    public static void SetSort(InsertionSort<Human> sort){
+        HSort=sort;
+    }
+
     public Human(HumanBuilder builder) {
         this.gender = builder.gender;
         this.secondName = builder.secondName;
