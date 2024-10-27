@@ -2,10 +2,6 @@ package InsertionSort;
 import entities.*;
 import  java.util.*;
 
-/*дополнительно к основным сортировкам реализовать эти же алгоритмы сортировки таким образом,
-что классы будут сортироваться по какому-либо числовому полю таким образом, что классы с четными
-значениями будут сортироваться в натуральном порядке, а с нечетными оставаться на своих местах.*/
-
 public interface InsertionSort <E extends Comparable<E>>{
     default void Sort(List<E> collection){
         E first=collection.get(0);

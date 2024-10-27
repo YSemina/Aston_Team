@@ -3,6 +3,7 @@ package InsertionSort;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 //это сортировка для четных числовых полей по числовому полю
 public class SpesialSort2<T extends Get & Comparable<T>> implements InsertionSort<T>, Comparator<T> {
@@ -54,7 +55,7 @@ public class SpesialSort2<T extends Get & Comparable<T>> implements InsertionSor
                 if(j>=(idx.size()-1)){break;}
             }
             k=1;
-            for(i=idx.get(k); i<collection.size()&&compare(collection.get(i),first)<0; i=idx.get(k)){
+            for(i=idx.get(k); i<collection.size()&&compare(collection.get(i), Objects.requireNonNull(first))<0; i=idx.get(k)){
                 collection.set(idx.get(k-1),collection.get(i));
                 ++k;
                 if(k>=(idx.size())){break;}
