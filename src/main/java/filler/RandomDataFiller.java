@@ -29,12 +29,6 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
 					String eyeColor = animalEyeColor[(int) (Math.random() * animalEyeColor.length)];
 					boolean fur = Math.random() > 0.5 ? true : false;
 
-                    /*if (!ValidationUtils.isValidAnimalData(species, eyeColor, fur)) {
-                        System.out.println("Введены недопустимые данные. Пожалуйста, попробуйте еще раз.");
-                        i--;
-                        continue;
-                    }*/
-
 					entities.add(new Animal.AnimalBuilder(species, eyeColor).fur(fur).build());
 
 				}
@@ -47,11 +41,6 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
 					String fromMaterial = barrelMade[(int) (Math.random() * barrelMade.length)];
 					Integer volume = (int) (Math.random() * 600);
 
-                   /* if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
-                        System.out.println("Введены недопустимые данные. Пожалуйста, попробуйте еще раз.");
-                        i--;
-                        continue;
-                    }*/
 
 					entities.add(new Barrel.BarrelBuilder(storedMaterial, fromMaterial, volume).build());
 
@@ -65,13 +54,8 @@ public class RandomDataFiller<Entity> implements Filler<Entity> {
 					String secondName = personSurname[(int) (Math.random() * personSurname.length)] + (gender.equals("Ж") ? "а" : "");
 					Integer age = (int) (Math.random() * 95) + 5;
 
-                   /* if (!ValidationUtils.isValidAnimalData(species, eyeColor, hasFur)) {
-                        System.out.println("Введены недопустимые данные. Пожалуйста, попробуйте еще раз.");
-                        i--;
-                        continue;
-                    }*/
 
-					entities.add(new Human.HumanBuilder(gender,secondName,age).build());
+					entities.add(new Human.HumanBuilder(gender, secondName, age).build());
 
 				}
 				break;

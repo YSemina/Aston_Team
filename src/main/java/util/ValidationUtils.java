@@ -1,15 +1,15 @@
 package util;
 
-import java.util.Optional;
+
 import java.util.Scanner;
 
 public class ValidationUtils {
 
     public static boolean isValidAnimalData(String s) {
         String line[]=s.split(",");
-        String species=null;
-        String eyeColor=null;
-        String fur=null;
+        String species;
+        String eyeColor;
+        String fur;
         if(line.length!=3) return false;
         species=line[0];
         eyeColor=line[1];
@@ -22,9 +22,9 @@ public class ValidationUtils {
 
     public static boolean isValidBarrelData(String s) {
         String line[]=s.split(",");
-        String content=null;
-        String made=null;
-        String volume=null;
+        String content;
+        String made;
+        String volume;
 
         if(line.length!=3) return false;
         content=line[0];
@@ -38,9 +38,9 @@ public class ValidationUtils {
 
     public static boolean isValidPersonData(String s) {
         String line[]=s.split(",");
-        String surname=null;
-        String gender=null;
-        String age=null;
+        String surname;
+        String gender;
+        String age;
         if(line.length!=3) return false;
         surname=line[0];
         age=line[1];

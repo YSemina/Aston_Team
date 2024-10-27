@@ -46,12 +46,12 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 					String line[] = s.split(",");
 					if (!ValidationUtils.isValidAnimalData(s)) { // line[0], line[1], line[2].equalsIgnoreCase("да")
 //                        System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
-						logger.log(Level.INFO, "Не верные данные для животных: "+s);
+						logger.log(Level.INFO, "Не верные данные для животных: " + s);
 
 						continue;
 					}
 
-					entities.add(new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")||line[2].equalsIgnoreCase("true")).build());
+					entities.add(new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да") || line[2].equalsIgnoreCase("true")).build());
 
 				}
 				break;
@@ -60,7 +60,7 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 				for (String s : lines) {
 					String line[] = s.split(",");
 					if (!ValidationUtils.isValidBarrelData(s)) {
-						logger.log(Level.INFO, "Не верные данные для бочек: "+s);
+						logger.log(Level.INFO, "Не верные данные для бочек: " + s);
 
 						continue;
 
@@ -74,7 +74,7 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 				for (String s : lines) {
 					String line[] = s.split(",");
 					if (!ValidationUtils.isValidPersonData(s)) {
-						logger.log(Level.INFO, "Не верные данные для людей: "+s);
+						logger.log(Level.INFO, "Не верные данные для людей: " + s);
 
 						continue;
 

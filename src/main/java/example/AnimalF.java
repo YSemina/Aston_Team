@@ -3,71 +3,71 @@ package example;
 import java.util.Scanner;
 
 public class AnimalF {
-    private final String species;
-    private final String eyeColor;
-    private final boolean fur;
+	private final String species;
+	private final String eyeColor;
+	private final boolean fur;
 
-    public AnimalF(AnimalFBuilder builder) {
-        this.species = builder.species;
-        this.eyeColor = builder.eyeColor;
-        this.fur = builder.fur;
-    }
+	public AnimalF(AnimalFBuilder builder) {
+		this.species = builder.species;
+		this.eyeColor = builder.eyeColor;
+		this.fur = builder.fur;
+	}
 
-    @Override
-    public String toString() {
-        return "Animal [species = " + species + ",  Fur = " +  fur + ", Eye Color = " + eyeColor + "]";
-    }
+	@Override
+	public String toString() {
+		return "Animal [species = " + species + ",  Fur = " + fur + ", Eye Color = " + eyeColor + "]";
+	}
 
-    public static class AnimalFBuilder {
-        private String species;
-        private String eyeColor;
-        private boolean fur;
+	public static class AnimalFBuilder {
+		private String species;
+		private String eyeColor;
+		private boolean fur;
 
 
-        public AnimalFBuilder setSpecies(String species) {
-            this.species = species;
-            return this;
-        }
+		public AnimalFBuilder setSpecies(String species) {
+			this.species = species;
+			return this;
+		}
 
-        public AnimalFBuilder seteyeColor(String eyeColor) {
-            this.eyeColor = eyeColor;
-            return this;
-        }
+		public AnimalFBuilder seteyeColor(String eyeColor) {
+			this.eyeColor = eyeColor;
+			return this;
+		}
 
-        public AnimalFBuilder setFur(boolean fur) {
-            this.fur = fur;
-            return this;
-        }
+		public AnimalFBuilder setFur(boolean fur) {
+			this.fur = fur;
+			return this;
+		}
 
-        public AnimalF build() {
-            return new AnimalF(this);
-        }
-    }
+		public AnimalF build() {
+			return new AnimalF(this);
+		}
+	}
 }
 
 class AnimalFBuild {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
-        AnimalF.AnimalFBuilder animalFBuilder = new AnimalF.AnimalFBuilder();
+		AnimalF.AnimalFBuilder animalFBuilder = new AnimalF.AnimalFBuilder();
 
-        System.out.print("Enter species: ");
-        String species = scanner.nextLine();
-        animalFBuilder.setSpecies(species);
+		System.out.print("Enter species: ");
+		String species = scanner.nextLine();
+		animalFBuilder.setSpecies(species);
 
-        System.out.print("Enter eye color: ");
-        String eyeColor = scanner.nextLine();
-        animalFBuilder.seteyeColor(eyeColor);
+		System.out.print("Enter eye color: ");
+		String eyeColor = scanner.nextLine();
+		animalFBuilder.seteyeColor(eyeColor);
 
-        System.out.print("Enter fur: 'true' for true or anything else for false: ");
-        boolean fur = scanner.hasNextBoolean();
-        animalFBuilder.setFur(fur);
+		System.out.print("Enter fur: 'true' for true or anything else for false: ");
+		boolean fur = scanner.hasNextBoolean();
+		animalFBuilder.setFur(fur);
 
-        AnimalF animalF = animalFBuilder.build();
+		AnimalF animalF = animalFBuilder.build();
 
-        System.out.println("Created Animal: " + animalF);
+		System.out.println("Created Animal: " + animalF);
 
-        scanner.close();
-    }
+		scanner.close();
+	}
 }

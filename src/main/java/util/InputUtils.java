@@ -37,7 +37,7 @@ public class InputUtils {
 			case 3:
 				return "file";
 			default:
-				System.out.println("Invalid choice. Please try again.");
+				System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
 				return typeOfFill();
 		}
 	}
@@ -50,7 +50,7 @@ public class InputUtils {
 				case "animal": {
 					String s = InputUtils.getString("Введите вид, цвет глаз, есть ли мех? (да/нет):\n");
 					line = s.split(",");
-					if (!ValidationUtils.isValidAnimalData(s)) { // line[0], line[1], line[2].equalsIgnoreCase("да")
+					if (!ValidationUtils.isValidAnimalData(s)) {
 						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
 						i--;
 					}
@@ -67,7 +67,7 @@ public class InputUtils {
 					break;
 				}
 				case "person": {
-					String s =InputUtils.getString("Введите фамилия, возраст, пол (М/Ж):\n");
+					String s = InputUtils.getString("Введите фамилия, возраст, пол (М/Ж):\n");
 					line = s.split(",");
 					if (!ValidationUtils.isValidPersonData(s)) {
 						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
@@ -81,7 +81,6 @@ public class InputUtils {
 		return line;
 	}
 
-	// Additional methods for reading from file and generating random data can be added here.
 }
 
 
