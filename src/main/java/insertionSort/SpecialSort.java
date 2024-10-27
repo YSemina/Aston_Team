@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 //это натуральная сортировка для четных числовых полей
-public class SpesialSort<T extends Get & Comparable<T>> implements InsertionSort<T> {
+public class SpecialSort<T extends Get & Comparable<T>> implements InsertionSort<T> {
 
 	@Override
 	public void Sort(List<T> collection) {

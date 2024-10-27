@@ -4,6 +4,7 @@
 import entities.Animal;
 import entities.Barrel;
 import entities.Human;
+import insertionSort.SpecialSort;
 import search.BinarySearch;
 import util.Handle;
 import util.InputUtils;
@@ -44,12 +45,13 @@ public class Application {
 				System.out.println("Коллекция пустая, попробуйте еще раз.");
 				continue;
 			}
-			System.out.print("Для поиска ");
-			String[] line = typeOfFill(entity);
+
 
 
 			switch (entity) {
 				case "animal" -> {
+					System.out.print("Для поиска ");
+					String[] line = typeOfFill(entity);
 					Animal.Sort(handle.getEntities());
 					Collections.singletonList(handle.getEntities()).forEach(System.out::println);
 					Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("yes")).build();
@@ -64,35 +66,69 @@ public class Application {
 					}
 				}
 				case "barrel" -> {
-					Barrel.Sort(handle.getEntities());
-					Collections.singletonList(handle.getEntities()).forEach(System.out::println);
-					Barrel searchKey = new Barrel.BarrelBuilder(line[0], line[1], Integer.parseInt(line[2])).build();
+					for (int i = 0; i < 1; i++) {
+						System.out.println("1. Сортировка вставками");
+						System.out.println("2. Сортировка только четных значений");
+						int sort = InputUtils.getInt("Введите свой вариант: ");
+						if (sort == 1) {
+							System.out.print("Для поиска ");
+							String[] line = typeOfFill(entity);
+							Barrel.Sort(handle.getEntities());
+							Collections.singletonList(handle.getEntities()).forEach(System.out::println);
+							Barrel searchKey = new Barrel.BarrelBuilder(line[0], line[1], Integer.parseInt(line[2])).build();
 
-					int index = BinarySearch.search(handle.getEntities(), searchKey);
+							int index = BinarySearch.search(handle.getEntities(), searchKey);
 
-					if (index != -1) {
-						System.out.println("Бочка найденна в индексе: " + index);
-						System.out.println(handle.getEntities().get(index));
-					} else {
-						System.out.println("Бочка не найдена.");
+							if (index != -1) {
+								System.out.println("Бочка найденна в индексе: " + index);
+								System.out.println(handle.getEntities().get(index));
+							} else {
+								System.out.println("Бочка не найдена.");
+							}
+						} else if (sort == 2) {
+							Barrel.SetSort(new SpecialSort<>());
+							Barrel.Sort(handle.getEntities());
+							Collections.singletonList(handle.getEntities()).forEach(System.out::println);
+							i--;
+						} else {
+							System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
+							i--;
+						}
 					}
 				}
 				case "person" -> {
-					Human.Sort(handle.getEntities());
-					Collections.singletonList(handle.getEntities()).forEach(System.out::println);
-					Human searchKey = new Human.HumanBuilder(line[2], line[0], Integer.parseInt(line[1])).build();
+					for (int i = 0; i < 1; i++) {
+						System.out.println("1. Сортировка вставками");
+						System.out.println("2. Сортировка только четных значений");
+						int sort = InputUtils.getInt("Введите свой вариант: ");
+						if (sort == 1) {
+							System.out.print("Для поиска ");
+							String[] line = typeOfFill(entity);
+							Human.Sort(handle.getEntities());
+							Collections.singletonList(handle.getEntities()).forEach(System.out::println);
+							Human searchKey = new Human.HumanBuilder(line[2], line[0], Integer.parseInt(line[1])).build();
 
-					int index = BinarySearch.search(handle.getEntities(), searchKey);
+							int index = BinarySearch.search(handle.getEntities(), searchKey);
 
-					if (index != -1) {
-						System.out.println("Человек найден на интексе: " + index);
-						System.out.println(handle.getEntities().get(index));
-					} else {
-						System.out.println("Человек не найден.");
+							if (index != -1) {
+								System.out.println("Человек найден на интексе: " + index);
+								System.out.println(handle.getEntities().get(index));
+							} else {
+								System.out.println("Человек не найден.");
+							}
+						} else if (sort == 2) {
+							Human.SetSort(new SpecialSort<>());
+							Human.Sort(handle.getEntities());
+							Collections.singletonList(handle.getEntities()).forEach(System.out::println);
+							i--;
+						} else {
+							System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
+							i--;
+						}
 					}
 				}
 			}
-		}
 
+		}
 	}
 }

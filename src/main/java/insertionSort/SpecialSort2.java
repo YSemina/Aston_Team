@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 //это сортировка для четных числовых полей по числовому полю
-public class SpesialSort2<T extends Get & Comparable<T>> implements InsertionSort<T>, Comparator<T> {
+public class SpecialSort2<T extends Get & Comparable<T>> implements InsertionSort<T>, Comparator<T> {
 	@Override
 	public int compare(T h1, T h2) {
 		return h1.Gets() - h2.Gets();
