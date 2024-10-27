@@ -1,5 +1,5 @@
 package InsertionSort;
-import entities.*;
+
 import  java.util.*;
 
 public interface InsertionSort <E extends Comparable<E>>{
