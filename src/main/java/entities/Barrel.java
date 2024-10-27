@@ -1,6 +1,6 @@
 package entities;
 
-import InsertionSort.*;
+import insertionSort_.*;
 
 import java.util.*;
 

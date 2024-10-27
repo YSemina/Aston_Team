@@ -1,4 +1,4 @@
-package InsertionSort;
+package insertionSort_;
 
 import entities.Animal;
 
