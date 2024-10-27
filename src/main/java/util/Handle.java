@@ -34,5 +34,12 @@ public class Handle {
 
 	}
 
+	public void write() {
+		FileAppender fileAppender = new FileAppender(InputUtils.getString("Введите имя файла: "));
+		for (Object e : entities) {
+			fileAppender.appendToFile(e.toString());
+		}
+	}
+
 
 }

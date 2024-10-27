@@ -47,7 +47,6 @@ public class Application {
 			}
 
 
-
 			switch (entity) {
 				case "animal" -> {
 					System.out.print("Для поиска ");
@@ -63,6 +62,12 @@ public class Application {
 						System.out.println(handle.getEntities().get(index));
 					} else {
 						System.out.println("Животное не найдено.");
+					}
+					System.out.println("Записать коллекцию в файл?");
+					System.out.println("1. да");
+					int file = InputUtils.getInt("Введите свой вариант: ");
+					if (file == 1) {
+						handle.write();
 					}
 				}
 				case "barrel" -> {
@@ -94,6 +99,13 @@ public class Application {
 							System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
 							i--;
 						}
+						System.out.println("Записать коллекцию в файл?");
+						System.out.println("1. да");
+						int file = InputUtils.getInt("Введите свой вариант: ");
+						if (file == 1) {
+							handle.write();
+						}
+
 					}
 				}
 				case "person" -> {
@@ -124,6 +136,12 @@ public class Application {
 						} else {
 							System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
 							i--;
+						}
+						System.out.println("Записать коллекцию в файл?");
+						System.out.println("1. да");
+						int file = InputUtils.getInt("Введите свой вариант: ");
+						if (file == 1) {
+							handle.write();
 						}
 					}
 				}
