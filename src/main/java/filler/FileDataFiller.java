@@ -35,7 +35,6 @@ public class FileDataFiller<Entity> implements Filler<Entity> {
 
 		final Path path = Paths.get(RESOURCES + fileName);
 		final List<String> lines = Files.readAllLines(path);
-		List.of(lines).forEach(System.out::println);
 
 		List entities = null;
 		switch (entity) {
