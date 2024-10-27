@@ -15,6 +15,24 @@ public class Human implements Comparable<Human>, Get{
 
     public static void SetSort(InsertionSort<Human> sort){
         HSort=sort;
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Human human = (Human) o;
+
+        if (age != human.age) return false;
+        if (!gender.equals(human.gender)) return false;
+        return secondName.equals(human.secondName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = gender.hashCode();
+        result = 31 * result + secondName.hashCode();
+        result = 31 * result + age;
+        return result;
     }
 
     public Human(HumanBuilder builder) {

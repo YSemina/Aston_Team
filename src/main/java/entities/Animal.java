@@ -8,6 +8,26 @@ public class Animal implements Comparable<Animal>{
     private final String eyeColor;
     private final boolean fur;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Animal animal = (Animal) o;
+
+        if (fur != animal.fur) return false;
+        if (!species.equals(animal.species)) return false;
+        return eyeColor.equals(animal.eyeColor);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = species.hashCode();
+        result = 31 * result + eyeColor.hashCode();
+        result = 31 * result + (fur ? 1 : 0);
+        return result;
+    }
+
     public Animal(AnimalBuilder builder) {
         this.species = builder.species;
         this.eyeColor = builder.eyeColor;
