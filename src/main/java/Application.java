@@ -5,9 +5,7 @@ import entities.Animal;
 import entities.Barrel;
 import entities.Human;
 import insertionSort.SpecialSort;
-import org.w3c.dom.ls.LSOutput;
 import search.BinarySearch;
-import util.FileAppender;
 import util.Handle;
 import util.InputUtils;
 

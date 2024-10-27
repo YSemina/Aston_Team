@@ -40,8 +40,11 @@ public class SpecialSort<T extends Get & Comparable<T>> implements InsertionSort
 			}
 			//установка минимального значение в начало сортировки
 			SetMin(collection, first, idx.get(0));
-			T temp = null;
-			int left, i, j = 1, k = 0;
+			T temp;
+			int left;
+			int i;
+			int j = 1;
+			int k;
 			for (left = idx.get(j); left < collection.size(); left = idx.get(++j)) {
 				temp = collection.get(left);
 				k = j - 1;
