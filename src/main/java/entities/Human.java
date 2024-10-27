@@ -3,12 +3,19 @@ package entities;
 import InsertionSort.*;
 import java.util.*;
 
-public class Human implements Comparable<Human>{
+public class Human implements Comparable<Human>, Get{
     private final String gender;
     private final String secondName;
     private final int age;
 
     @Override
+    public int Gets(){
+        return age;
+    }
+
+    public static void SetSort(InsertionSort<Human> sort){
+        HSort=sort;
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -33,7 +40,6 @@ public class Human implements Comparable<Human>{
         this.secondName = builder.secondName;
         this.age = builder.age;
     }
-
     public static InsertionSort<Human> HSort=new HumanSort();
     public String Gender(){return gender;}
     public String Surname(){return secondName;}
@@ -45,6 +51,7 @@ public class Human implements Comparable<Human>{
     public int compareTo(Human human) {
         return new SurnameComparator().thenComparing(new AgeComparator()).thenComparing(new GenderComparator()).compare(this,human);
     }
+
     @Override
     public String toString() {
         return "Human [gender = " + gender + ", age = " + age + ", second name = " + secondName + "]";

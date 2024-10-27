@@ -1,10 +1,19 @@
 package entities;
  import InsertionSort.*;
  import java.util.*;
-public class Barrel implements Comparable<Barrel>{
+public class Barrel implements Comparable<Barrel>,Get{
     private final String storedMaterial;
     private final String fromMaterial;
     private final int volume;
+
+    public static void SetSort(InsertionSort<Barrel> sort){
+        BSort=sort;
+    }
+
+    @Override
+    public int Gets(){
+       return volume;
+    }
 
     public Barrel(BarrelBuilder builder) {
         this.storedMaterial = builder.storedMaterial;

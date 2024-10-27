@@ -1,12 +1,9 @@
 package InsertionSort;
-import entities.Human;
 
 import  java.util.*;
 
-
 public interface InsertionSort <E extends Comparable<E>>{
     default void Sort(List<E> collection){
-        System.out.println("Размер коллекции "+collection.size()+"\n");
         E first=collection.get(0);
         setMin(collection);
         E temp;
@@ -23,6 +20,7 @@ public interface InsertionSort <E extends Comparable<E>>{
         }
         collection.set(i-1,first);
     }
+
     default void setMin(List<E> collection){
         E min=collection.get(0);
         for(int i=1;i<collection.size();++i){
@@ -31,21 +29,9 @@ public interface InsertionSort <E extends Comparable<E>>{
             }
         }
         collection.set(0,min);
-        System.out.println("Min: "+ min + "\n");
     }
 }
 
-class Main {
-    public static void main(String[] args) {
-        List<Human> test = new ArrayList<>();
-        test.add(new Human.HumanBuilder("Male", "Bishop", 25).build());
-        test.add(new Human.HumanBuilder("Female", "Anya", 23).build());
-        Human.Sort(test);
-        for (Human i : test) {
-            System.out.println(i);
-        }
-    }
-}
 
 
 

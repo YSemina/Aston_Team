@@ -38,7 +38,6 @@ public class Animal implements Comparable<Animal>{
     public String Species(){return species;}
     public String Eye(){return eyeColor;}
     public boolean Fur(){return fur;}
-
     public static void Sort(List<Animal> collection){
         ASort.Sort(collection);
     }
