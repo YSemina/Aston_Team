@@ -42,8 +42,8 @@ public class SpesialSort2<T extends Get & Comparable<T>> implements InsertionSor
                 }
             }
             SetMin(collection,first,idx.get(0));
-            T temp=null;
-            int left,i,j=1,k=0;
+            T temp;
+            int left,i,j=1,k;
             for (left = idx.get(j); left < collection.size(); left=idx.get(++j)) {
                 temp=collection.get(left);
                 k=j-1;
