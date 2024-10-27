@@ -18,16 +18,18 @@ public class HandleAnimals {
         List<Animal> animals = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            String line[] = InputUtils.getString("Enter species, eye color, Has fur? (yes/no)\n").split(",");
-            String species = line[0];
-            String eyeColor = line[1];
-            boolean fur = line[2].equalsIgnoreCase("yes");
+            String s=InputUtils.getString("Enter species, eye color, Has fur? (yes/no)\n");
+            String line[] = s.split(",");
 
-            if (!ValidationUtils.isValidAnimalData(species, eyeColor, fur)) {
+
+            if (!ValidationUtils.isValidAnimalData(s)) {
                 System.out.println("Invalid data entered. Please try again.");
                 i--;
                 continue;
             }
+            String species = line[0];
+            String eyeColor = line[1];
+            boolean fur = line[2].equalsIgnoreCase("yes");
 
             animals.add(new Animal.AnimalBuilder(species, eyeColor).fur(fur).build());
 
@@ -44,9 +46,9 @@ public class HandleAnimals {
         String line[] = {};
         for (int i = 0; i < 1; i++) {
 
-
-            line = InputUtils.getString("Enter species, eye color, Has fur? (yes/no) to search:\n").split(",");
-            if (!ValidationUtils.isValidAnimalData(line[0], line[1], line[2].equalsIgnoreCase("yes"))) {
+String s=InputUtils.getString("Enter species, eye color, Has fur? (yes/no) to search:\n");
+            line = s.split(",");
+            if (!ValidationUtils.isValidAnimalData(s)) {
                 System.out.println("Invalid data entered. Please try again.");
                 i--;
             }

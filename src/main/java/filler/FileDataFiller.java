@@ -4,6 +4,7 @@ import entities.Animal;
 import entities.Barrel;
 import entities.Human;
 import util.InputUtils;
+import util.ValidationUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,57 +13,89 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static util.InputUtils.getString;
 import static util.InputUtils.typeOfFill;
 
 public class FileDataFiller<Entity> implements Filler<Entity> {
-    private static final String RESOURCES = "src/main/resources/";
+	private static final Logger logger = Logger.getLogger(FileDataFiller.class.getName());
 
-    @Override
-    public List fill(String entity) throws IOException {
-        String fileName=getString("Введите имя файла");
-        final Path path = Paths.get(RESOURCES + fileName);
-        final List<String> lines = Files.readAllLines(path);
-        Arrays.asList(lines).forEach(System.out::println);
+	private static final String RESOURCES = "src/main/resources/";
 
-        //  int n = InputUtils.getInt("Количество: ");
-        List entities = null;
-      /*  switch (entity) {
-            case "animal":
-                entities = new ArrayList<Animal>();
-                for (int i = 0; i < n; i++) {
-                    String[] line = typeOfFill(entity);
+	@Override
+	public List fill(String entity) throws IOException {
+		String fileName = null;
+		for (int i = 0; i < 1; i++) {
+			fileName = getString("Введите имя файла: ");
+			if (!Files.exists(Paths.get(RESOURCES + fileName))) {
+				System.out.println("Файл не найден.");
+				i--;
+			}
+			;
+		}
+//        String fileName=getString("Введите имя файла");
+//        System.out.println(Files.exists(Paths.get(RESOURCES + fileName)));
+		final Path path = Paths.get(RESOURCES + fileName);
+		final List<String> lines = Files.readAllLines(path);
+		Arrays.asList(lines).forEach(System.out::println);
 
-                    entities.add(new Animal.AnimalBuilder(line[0],line[1]).fur(line[2].equalsIgnoreCase("yes")).build());
+		//  int n = InputUtils.getInt("Количество: ");
+		List entities = null;
+		switch (entity) {
+			case "animal":
+				entities = new ArrayList<Animal>();
+				for (String s : lines) {
+					String line[] = s.split(",");
+					if (!ValidationUtils.isValidAnimalData(s)) { // line[0], line[1], line[2].equalsIgnoreCase("да")
+//                        System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
+						logger.log(Level.INFO, "Не верные данные: "+s);
 
-                }
-                break;
-            case "barrel":
-                entities = new ArrayList<Barrel>();
-                for (int i = 0; i < n; i++) {
+						continue;
+					}
+//                    String[] line = typeOfFill(entity);
 
-                    String[] line = typeOfFill(entity);
+					entities.add(new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")||line[2].equalsIgnoreCase("true")).build());
+//							equalsIgnoreCase("да"||"true")).build());
 
-                    entities.add(new Barrel.BarrelBuilder(line[0],line[1],Integer.valueOf(line[2])).build());
+				}
+				break;
+			case "barrel":
+				entities = new ArrayList<Barrel>();
+				for (String s : lines) {
+					String line[] = s.split(",");
+					if (!ValidationUtils.isValidBarrelData(Integer.valueOf(line[2]), line[0], line[1])) {
+//						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
+						logger.log(Level.INFO, "Не верные данные: "+s);
 
-                }
-                break;
-            case "person":
-                entities = new ArrayList<Human>();
-                for (int i = 0; i < n; i++) {
+						continue;
 
-                    String[] line = typeOfFill(entity);
+					}
+					entities.add(new Barrel.BarrelBuilder(line[0], line[1], Integer.valueOf(line[2])).build());
 
-                    entities.add(new Human.HumanBuilder(line[2], line[0], Integer.valueOf(line[1])).build());
+				}
+				break;
+			case "person":
+				entities = new ArrayList<Human>();
+				for (String s : lines) {
+					String line[] = s.split(",");
+					if (!ValidationUtils.isValidPersonData(line[0], line[2], Integer.valueOf(line[1]))) {
+//						System.out.println("Неверный ввод. Пожалуйста, попробуйте еще раз.");
+						logger.log(Level.INFO, "Не верные данные: "+s);
 
-                }
-                break;
+						continue;
 
-        }*/
+					}
+					entities.add(new Human.HumanBuilder(line[2], line[0], Integer.valueOf(line[1])).build());
 
-        return entities;
-    }
+				}
+				break;
+
+		}
+
+		return entities;
+	}
 
 }
 

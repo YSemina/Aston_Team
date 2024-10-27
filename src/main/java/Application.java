@@ -48,6 +48,9 @@ public class Application {
 //            handle.filler(typeOfFill(),animals);
 
             Arrays.asList(handle.getEntities()).forEach(System.out::println);
+            if(handle.getEntities().size()==0) {
+                System.out.println("Коллекция пустая, попробуйте еще раз.");
+                continue;}
             System.out.print("Для поиска ");
             String[] line = typeOfFill(entity);
 

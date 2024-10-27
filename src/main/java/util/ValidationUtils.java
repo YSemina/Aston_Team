@@ -2,8 +2,18 @@ package util;
 
 public class ValidationUtils {
 
-    public static boolean isValidAnimalData(String species, String eyeColor, boolean hasFur) {
-        // Implement validation logic
+    public static boolean isValidAnimalData(String s) {
+        String line[]=s.split(",");
+        String species=null;
+        String eyeColor=null;
+        String fur=null;
+        if(line.length!=3) return false;
+        species=line[0];
+        eyeColor=line[1];
+        fur=line[2];
+        if(!(fur.equalsIgnoreCase("да")||fur.equalsIgnoreCase("нет")
+                ||fur.equalsIgnoreCase("true")||fur.equalsIgnoreCase("false")))
+            return false;
         return !species.isEmpty() && !eyeColor.isEmpty();
     }
 
