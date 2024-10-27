@@ -1,4 +1,4 @@
-package InsertionSort;
+package insertionSort;
 
 
 public interface Get{
