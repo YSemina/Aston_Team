@@ -101,11 +101,12 @@ public class Application {
                     flag = InputUtils.getInt("Введите свой вариант: ");
                    if (flag == 1) {
                        int index;
-                       System.out.print("Для поиска ");
+                       System.out.println();//для поиска
                        String[] line = typeOfFill(entity);
                           if (entity.equals("animal")) {
                             Animal.Sort(handle.getEntities());
-                            Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("yes")).build();
+                            handle.print();
+                            Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")).build();
                             index = BinarySearch.search(handle.getEntities(), searchKey);
                           }
                           else if (entity.equals("barrel")) {
@@ -134,6 +135,7 @@ public class Application {
                  int file = InputUtils.getInt("Введите свой вариант: ");
                  if (file == 1) {
                    handle.write();
+                   System.out.println("Файл успешно записан!\n");
                  }
                  System.out.println("Вернуться в меню сортировки?");
                  System.out.println("1. да\n2. нет");
