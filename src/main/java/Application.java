@@ -106,7 +106,7 @@ public class Application {
                           if (entity.equals("animal")) {
                             Animal.Sort(handle.getEntities());
                             handle.print();
-                            Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")).build();
+                            Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("да")||line[2].equalsIgnoreCase("есть мех")).build();
                             index = BinarySearch.search(handle.getEntities(), searchKey);
                           }
                           else if (entity.equals("barrel")) {
