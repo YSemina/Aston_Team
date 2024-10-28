@@ -15,7 +15,7 @@ public class ValidationUtils {
 		eyeColor = line[1];
 		fur = line[2];
 		if (!(fur.equalsIgnoreCase("да") || fur.equalsIgnoreCase("нет")
-				|| fur.equalsIgnoreCase("true") || fur.equalsIgnoreCase("false")))
+				|| fur.equalsIgnoreCase("есть мех") || fur.equalsIgnoreCase("нет меха")))
 			return false;
 		return !species.isEmpty() && !eyeColor.isEmpty();
 	}
