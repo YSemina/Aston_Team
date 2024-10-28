@@ -60,7 +60,7 @@ public class Animal implements Comparable<Animal> {
 
 	@Override
 	public String toString() {
-		return species + "," + eyeColor + "," + fur;
+		return species + "," + eyeColor + "," + ((fur)?"есть мех":"нет меха");
 	}
 
 	public static class AnimalBuilder {

@@ -4,7 +4,10 @@
 import entities.Animal;
 import entities.Barrel;
 import entities.Human;
+import insertionSort.BarrelSort;
+import insertionSort.HumanSort;
 import insertionSort.SpecialSort;
+import insertionSort.SpecialSort2;
 import search.BinarySearch;
 import util.Handle;
 import util.InputUtils;
@@ -46,113 +49,96 @@ public class Application {
                 continue;
             }
 
-
-            switch (entity) {
-                case "animal" -> {
-                    System.out.print("Для поиска ");
-                    String[] line = typeOfFill(entity);
+            int flag;
+            do {
+                System.out.println("\n1. Пропустить сортировку");
+                System.out.println("2. Отсортировать список");
+                if (!entity.equals("animal")) {
+                  System.out.println("3. Отсортировать список только c четными значениями");
+                }
+                int sort = InputUtils.getInt("Введите свой вариант: ");
+                if ((sort == 2)&&(entity.equals("animal"))) {
                     Animal.Sort(handle.getEntities());
-                    handle.print();
-                    Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("yes")).build();
-
-                    int index = BinarySearch.search(handle.getEntities(), searchKey);
-
-                    if (index != -1) {
-                        System.out.println("Животное найденое в индексе: " + index);
-                        System.out.println(handle.getEntities().get(index));
-                    } else {
-                        System.out.println("Животное не найдено.");
-                    }
-                    System.out.println("Записать коллекцию в файл?");
-                    System.out.println("1. да");
-                    int file = InputUtils.getInt("Введите свой вариант: ");
-                    if (file == 1) {
-                        handle.write();
-                    }
                 }
-                case "barrel" -> {
-                    for (int i = 0; i < 1; i++) {
-                        System.out.println("1. Сортировка вставками");
-                        System.out.println("2. Сортировка только четных значений");
-                        System.out.println("3. Пропустить сортировку");
-                        int sort = InputUtils.getInt("Введите свой вариант: ");
-                        if (sort == 1) {
-                            System.out.print("Для поиска ");
-                            String[] line = typeOfFill(entity);
-                            Barrel.Sort(handle.getEntities());
-                            handle.print();
-                            Barrel searchKey = new Barrel.BarrelBuilder(line[0], line[1], Integer.parseInt(line[2])).build();
-
-                            int index = BinarySearch.search(handle.getEntities(), searchKey);
-
-                            if (index != -1) {
-                                System.out.println("Бочка найденна в индексе: " + index);
-                                System.out.println(handle.getEntities().get(index));
-                            } else {
-                                System.out.println("Бочка не найдена.");
-                            }
-                        } else if (sort == 2) {
-                            Barrel.SetSort(new SpecialSort<>());
-                            Barrel.Sort(handle.getEntities());
-                            handle.print();
-                            i--;
-                        } else if (sort == 3) {
-                            continue;
-                        } else {
-                            System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
-                            i--;
-                        }
-                        System.out.println("Записать коллекцию в файл?");
-                        System.out.println("1. да");
-                        int file = InputUtils.getInt("Введите свой вариант: ");
-                        if (file == 1) {
-                            handle.write();
-                        }
-
-                    }
+                else if((sort==2)&&(entity.equals("barrel"))) {
+                     Barrel.SetSort(new BarrelSort());
+                     Barrel.Sort(handle.getEntities());
                 }
-                case "person" -> {
-                    for (int i = 0; i < 1; i++) {
-                        System.out.println("1. Сортировка вставками");
-                        System.out.println("2. Сортировка только четных значений");
-                        System.out.println("3. Пропустить сортировку");
-                        int sort = InputUtils.getInt("Введите свой вариант: ");
-                        if (sort == 1) {
-                            System.out.print("Для поиска ");
-                            String[] line = typeOfFill(entity);
-                            Human.Sort(handle.getEntities());
-                            handle.print();
-                            Human searchKey = new Human.HumanBuilder(line[2], line[0], Integer.parseInt(line[1])).build();
-
-                            int index = BinarySearch.search(handle.getEntities(), searchKey);
-
-                            if (index != -1) {
-                                System.out.println("Человек найден на интексе: " + index);
-                                System.out.println(handle.getEntities().get(index));
-                            } else {
-                                System.out.println("Человек не найден.");
-                            }
-                        } else if (sort == 2) {
+                 else if(sort==2) {
+                    Human.SetSort(new HumanSort());
+                    Human.Sort(handle.getEntities());
+                 }
+                if((sort==3)&&(!entity.equals("animal"))){
+                    System.out.println("1. Отсортировать в натуральном порядке");
+                    System.out.println("2. Отсортировать по числовому полю");
+                    sort = InputUtils.getInt("Введите свой вариант: ");
+                    if(entity.equals("barrel")){
+                       if(sort==1){
+                           Barrel.SetSort(new SpecialSort<>());
+                       }
+                        else if(sort==2) {
+                           Barrel.SetSort(new SpecialSort2<>());
+                        }
+                        Barrel.Sort(handle.getEntities());
+                    }
+                    else {
+                        if(sort==1) {
                             Human.SetSort(new SpecialSort<>());
+                           }
+                           else if(sort==2) {
+                             Human.SetSort(new SpecialSort2<>());
+                           }
                             Human.Sort(handle.getEntities());
-                            handle.print();
-                            i--;
-                        } else if (sort == 3) {
-                            continue;
-                        } else {
-                            System.out.println("Неверный выбор. Пожалуйста, попробуйте еще раз.");
-                            i--;
-                        }
-                        System.out.println("Записать коллекцию в файл?");
-                        System.out.println("1. да");
-                        int file = InputUtils.getInt("Введите свой вариант: ");
-                        if (file == 1) {
-                            handle.write();
-                        }
                     }
                 }
-            }
-
+                 System.out.println("\nПоказать список?\n1. да\n2. нет\n");
+                 sort = InputUtils.getInt("Введите свой вариант: ");
+                 if (sort == 1) {
+                     handle.print();
+                 }
+                 do {
+                    System.out.println("\nНужно найти элемент?\n1. да\n2. нет\n");
+                    flag = InputUtils.getInt("Введите свой вариант: ");
+                   if (flag == 1) {
+                       int index;
+                       System.out.print("Для поиска ");
+                       String[] line = typeOfFill(entity);
+                          if (entity.equals("animal")) {
+                            Animal.Sort(handle.getEntities());
+                            Animal searchKey = new Animal.AnimalBuilder(line[0], line[1]).fur(line[2].equalsIgnoreCase("yes")).build();
+                            index = BinarySearch.search(handle.getEntities(), searchKey);
+                          }
+                          else if (entity.equals("barrel")) {
+                            Barrel.SetSort(new BarrelSort());
+                            Barrel.Sort(handle.getEntities());
+                            Barrel searchKey = new Barrel.BarrelBuilder(line[0], line[1], Integer.parseInt(line[2])).build();
+                             index = BinarySearch.search(handle.getEntities(), searchKey);
+                          }
+                          else {
+                             Human.SetSort(new HumanSort());
+                             Human.Sort(handle.getEntities());
+                             Human searchKey = new Human.HumanBuilder(line[2], line[0], Integer.parseInt(line[1])).build();
+                             index = BinarySearch.search(handle.getEntities(), searchKey);
+                          }
+                           if (index != -1) {
+                             System.out.println("Элемент найдет по индексу : " + index);
+                             System.out.println(handle.getEntities().get(index));
+                           }
+                           else {
+                              System.out.println("Элемент не найден");
+                           }
+                   }
+                 }while(flag!=2);
+                 System.out.println("Записать коллекцию в файл?");
+                 System.out.println("1. да\n2. нет");
+                 int file = InputUtils.getInt("Введите свой вариант: ");
+                 if (file == 1) {
+                   handle.write();
+                 }
+                 System.out.println("Вернуться в меню сортировки?");
+                 System.out.println("1. да\n2. нет");
+                 flag= InputUtils.getInt("Введите свой вариант: ");
+            }while(flag!=2);
         }
     }
 }
